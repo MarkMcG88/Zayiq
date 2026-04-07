@@ -1,8 +1,11 @@
 <section class="product-page section-padding">
   <div class="page-width">
+    {% render 'breadcrumbs' %}
+
     <div class="product-page__inner">
+      <!-- Image Gallery -->
       <div class="product-page__gallery">
-        <div class="product-page__main-image">
+        <div class="product-page__main-image" data-image-zoom>
           {% if product.featured_image %}
             <img
               src="{{ product.featured_image | image_url: width: 1200 }}"
@@ -37,6 +40,7 @@
         {% endif %}
       </div>
 
+      <!-- Product Details -->
       <div class="product-page__details">
         {% if product.vendor != blank %}
           <p class="product-page__vendor">{{ product.vendor }}</p>
@@ -44,10 +48,12 @@
 
         <h1 class="product-page__title">{{ product.title }}</h1>
 
-        <div class="product-page__price">
+        <div class="product-page__price" id="ProductPrice">
           {% if product.compare_at_price > product.price %}
-            <span style="text-decoration: line-through; opacity: 0.5;">{{ product.compare_at_price | money }}</span>
+            <span style="text-decoration: line-through; opacity: 0.4;">{{ product.compare_at_price | money }}</span>
             <span style="color: var(--color-primary);">{{ product.price | money }}</span>
+            {% assign savings = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
+            <span class="product-page__savings">Save {{ savings }}%</span>
           {% else %}
             <span>{{ product.price | money }}</span>
           {% endif %}
@@ -55,7 +61,7 @@
 
         {% if product.description != blank %}
           <div class="product-page__description">
-            {{ product.description }}
+            {{ product.description | truncatewords: 40 }}
           </div>
         {% endif %}
 
@@ -63,16 +69,35 @@
           {% if product.variants.size > 1 %}
             {% for option in product.options_with_values %}
               <div class="product-page__variants">
-                <p class="product-page__variant-label">{{ option.name }}</p>
+                <p class="product-page__variant-label">
+                  {{ option.name }}
+                  {% assign option_lower = option.name | downcase %}
+                  {% if option_lower == 'size' %}
+                    <button type="button" class="product-page__size-guide-link" data-size-guide-open>Size Guide</button>
+                  {% endif %}
+                </p>
+
                 <div class="product-page__variant-options">
                   {% for value in option.values %}
-                    <button
-                      type="button"
-                      class="product-page__variant-option {% if forloop.first %}is-active{% endif %}"
-                      data-value="{{ value }}"
-                    >
-                      {{ value }}
-                    </button>
+                    {% assign option_lower = option.name | downcase %}
+                    {% if option_lower == 'color' or option_lower == 'colour' %}
+                      <button
+                        type="button"
+                        class="product-page__color-swatch {% if forloop.first %}is-active{% endif %}"
+                        data-value="{{ value }}"
+                        style="background-color: {{ value | downcase | replace: ' ', '' }};"
+                        title="{{ value }}"
+                        aria-label="{{ value }}"
+                      ></button>
+                    {% else %}
+                      <button
+                        type="button"
+                        class="product-page__variant-option {% if forloop.first %}is-active{% endif %}"
+                        data-value="{{ value }}"
+                      >
+                        {{ value }}
+                      </button>
+                    {% endif %}
                   {% endfor %}
                 </div>
               </div>
@@ -89,27 +114,187 @@
             <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
           {% endif %}
 
-          <button
-            type="submit"
-            name="add"
-            class="btn btn--primary btn--large product-page__add-to-cart"
-            {% unless product.available %}disabled{% endunless %}
-          >
-            {% if product.available %}
-              Add to Cart
-            {% else %}
-              Sold Out
-            {% endif %}
-          </button>
+          <div class="product-page__add-row">
+            <div class="product-page__quantity">
+              <button type="button" class="product-page__qty-btn" data-action="decrease" aria-label="Decrease quantity">-</button>
+              <input type="number" name="quantity" value="1" min="1" class="product-page__qty-input" aria-label="Quantity">
+              <button type="button" class="product-page__qty-btn" data-action="increase" aria-label="Increase quantity">+</button>
+            </div>
+
+            <button
+              type="submit"
+              name="add"
+              class="btn btn--primary btn--large product-page__add-to-cart"
+              {% unless product.available %}disabled{% endunless %}
+            >
+              {% if product.available %}
+                Add to Cart — {{ product.price | money }}
+              {% else %}
+                Sold Out
+              {% endif %}
+            </button>
+          </div>
         {% endform %}
+
+        <!-- Trust badges -->
+        <div class="product-page__trust">
+          <div class="product-page__trust-item">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Secure Checkout
+          </div>
+          <div class="product-page__trust-item">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Free Shipping Over $100
+          </div>
+          <div class="product-page__trust-item">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+            30-Day Returns
+          </div>
+        </div>
+
+        <!-- Accordions -->
+        <div class="product-page__accordions">
+          {% if product.description != blank %}
+            <div class="accordion" data-accordion>
+              <button class="accordion__trigger" data-accordion-trigger aria-expanded="false">
+                Description
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="accordion__content" data-accordion-content>
+                <div class="accordion__inner">
+                  {{ product.description }}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if section.settings.show_size_guide %}
+            <div class="accordion" data-accordion>
+              <button class="accordion__trigger" data-accordion-trigger aria-expanded="false">
+                Size & Fit
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="accordion__content" data-accordion-content>
+                <div class="accordion__inner">
+                  {{ section.settings.size_fit_text | default: 'This product runs true to size. We recommend ordering your normal size. Model is 6\'0" and wears a Medium.' }}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+
+          <div class="accordion" data-accordion>
+            <button class="accordion__trigger" data-accordion-trigger aria-expanded="false">
+              Shipping & Returns
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="accordion__content" data-accordion-content>
+              <div class="accordion__inner">
+                {{ section.settings.shipping_text | default: '<p>Free standard shipping on orders over $100. Standard shipping takes 5-7 business days.</p><p>We accept returns within 30 days of delivery. Items must be unworn with tags attached.</p>' }}
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion" data-accordion>
+            <button class="accordion__trigger" data-accordion-trigger aria-expanded="false">
+              Care Instructions
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="accordion__content" data-accordion-content>
+              <div class="accordion__inner">
+                {{ section.settings.care_text | default: '<p>Machine wash cold with like colors. Tumble dry low. Do not bleach. Iron on low heat if needed.</p>' }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Share -->
+        <div class="product-page__share">
+          <span class="product-page__share-label">Share</span>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ product.url }}" target="_blank" rel="noopener" aria-label="Share on Facebook" class="product-page__share-link">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://twitter.com/intent/tweet?url={{ shop.url }}{{ product.url }}&text={{ product.title | url_encode }}" target="_blank" rel="noopener" aria-label="Share on X" class="product-page__share-link">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M4 4l6.5 8L4 20h2l5.5-6.5L16 20h4l-6.5-8L20 4h-2l-5.5 6.5L8 4H4z"/></svg>
+          </a>
+          <a href="https://pinterest.com/pin/create/button/?url={{ shop.url }}{{ product.url }}&media={{ product.featured_image | image_url: width: 1200 }}&description={{ product.title | url_encode }}" target="_blank" rel="noopener" aria-label="Share on Pinterest" class="product-page__share-link">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.237 2.636 7.855 6.356 9.312-.088-.791-.167-2.005.035-2.868.181-.78 1.172-4.97 1.172-4.97s-.299-.598-.299-1.482c0-1.388.806-2.425 1.808-2.425.853 0 1.265.64 1.265 1.408 0 .858-.546 2.14-.828 3.33-.236.995.5 1.807 1.48 1.807 1.778 0 3.144-1.874 3.144-4.58 0-2.393-1.72-4.068-4.177-4.068-2.845 0-4.515 2.135-4.515 4.34 0 .859.331 1.781.745 2.282a.3.3 0 01.069.288l-.278 1.133c-.044.183-.145.222-.335.134-1.249-.581-2.03-2.407-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.473 6.165 5.776 0 3.447-2.173 6.22-5.19 6.22-1.013 0-1.965-.527-2.291-1.148l-.623 2.378c-.226.869-.835 1.958-1.244 2.621.937.29 1.931.446 2.962.446 5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+          </a>
+          <button type="button" class="product-page__share-link" data-copy-url="{{ shop.url }}{{ product.url }}" aria-label="Copy link">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Related Products -->
+{% if recommendations.products.size > 0 or section.settings.show_related %}
+  <section class="section-padding" style="padding-top: 0;">
+    <div class="page-width">
+      <h2 style="margin-bottom: 32px;" class="reveal">You May Also Like</h2>
+      <div class="grid grid--4 reveal-stagger">
+        {% for product in recommendations.products limit: 4 %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+<!-- Sticky Add to Cart Bar -->
+<div class="sticky-atc" id="StickyATC">
+  <div class="page-width">
+    <div class="sticky-atc__inner">
+      <div class="sticky-atc__info">
+        {% if product.featured_image %}
+          <img src="{{ product.featured_image | image_url: width: 80 }}" alt="" width="40" height="50" class="sticky-atc__image">
+        {% endif %}
+        <div>
+          <p class="sticky-atc__title">{{ product.title }}</p>
+          <p class="sticky-atc__price">{{ product.price | money }}</p>
+        </div>
+      </div>
+      <button type="button" class="btn btn--primary sticky-atc__btn" onclick="document.querySelector('.product-page__add-to-cart').click();">
+        {% if product.available %}Add to Cart{% else %}Sold Out{% endif %}
+      </button>
+    </div>
+  </div>
+</div>
+
+{% render 'size-guide' %}
+
 {% schema %}
 {
   "name": "Product page",
-  "settings": []
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_size_guide",
+      "label": "Show size & fit accordion",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "size_fit_text",
+      "label": "Size & fit text"
+    },
+    {
+      "type": "richtext",
+      "id": "shipping_text",
+      "label": "Shipping & returns text"
+    },
+    {
+      "type": "richtext",
+      "id": "care_text",
+      "label": "Care instructions text"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_related",
+      "label": "Show related products",
+      "default": true
+    }
+  ]
 }
 {% endschema %}

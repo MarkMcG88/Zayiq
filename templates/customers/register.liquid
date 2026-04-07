@@ -1,0 +1,41 @@
+<section class="account-page section-padding">
+  <div class="page-width">
+    <div class="account-form">
+      <h1 class="account-form__title">Create Account</h1>
+      <p class="account-form__subtitle">Join the Zayiq collective</p>
+
+      {% form 'create_customer' %}
+        {{ form.errors | default_errors }}
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="FirstName" class="form-label">First Name</label>
+            <input type="text" name="customer[first_name]" id="FirstName" class="form-input" autocomplete="given-name" required>
+          </div>
+          <div class="form-field">
+            <label for="LastName" class="form-label">Last Name</label>
+            <input type="text" name="customer[last_name]" id="LastName" class="form-input" autocomplete="family-name" required>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="Email" class="form-label">Email</label>
+          <input type="email" name="customer[email]" id="Email" class="form-input" autocomplete="email" required>
+        </div>
+
+        <div class="form-field">
+          <label for="CreatePassword" class="form-label">Password</label>
+          <input type="password" name="customer[password]" id="CreatePassword" class="form-input" autocomplete="new-password" required>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--large account-form__submit">Create Account</button>
+      {% endform %}
+
+      <div class="account-form__divider">
+        <span>Already have an account?</span>
+      </div>
+
+      <a href="/account/login" class="btn btn--outline btn--large account-form__submit">Sign In</a>
+    </div>
+  </div>
+</section>

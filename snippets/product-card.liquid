@@ -1,13 +1,24 @@
-<a href="{{ product.url }}" class="product-card">
-  <div class="product-card__media">
+<div class="product-card" data-product-url="{{ product.url }}">
+  <a href="{{ product.url }}" class="product-card__media" aria-label="{{ product.title | escape }}">
     {% if product.featured_image %}
       <img
+        class="product-card__img product-card__img--primary"
         src="{{ product.featured_image | image_url: width: 800 }}"
         alt="{{ product.featured_image.alt | default: product.title | escape }}"
         loading="lazy"
         width="600"
         height="800"
       >
+      {% if product.images.size > 1 %}
+        <img
+          class="product-card__img product-card__img--secondary"
+          src="{{ product.images[1] | image_url: width: 800 }}"
+          alt="{{ product.images[1].alt | default: product.title | escape }}"
+          loading="lazy"
+          width="600"
+          height="800"
+        >
+      {% endif %}
     {% else %}
       {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
     {% endif %}
@@ -15,21 +26,23 @@
     {% if product.compare_at_price > product.price %}
       <span class="product-card__badge">Sale</span>
     {% elsif product.available == false %}
-      <span class="product-card__badge" style="background: var(--color-text);">Sold Out</span>
+      <span class="product-card__badge product-card__badge--sold-out">Sold Out</span>
     {% endif %}
 
     {% if product.available %}
       <div class="product-card__quick-add">
-        <span class="btn btn--primary">Quick View</span>
+        <button type="button" class="btn" data-quick-view="{{ product.url }}">Quick View</button>
       </div>
     {% endif %}
-  </div>
+  </a>
 
   <div class="product-card__info">
     {% if product.vendor != blank %}
       <p class="product-card__vendor">{{ product.vendor }}</p>
     {% endif %}
-    <h3 class="product-card__title">{{ product.title }}</h3>
+    <h3 class="product-card__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
     <div class="product-card__price">
       {% if product.compare_at_price > product.price %}
         <span class="product-card__price--compare">{{ product.compare_at_price | money }}</span>
@@ -38,5 +51,32 @@
         <span>{{ product.price | money }}</span>
       {% endif %}
     </div>
+
+    {% comment %} Color swatches on product card {% endcomment %}
+    {% assign color_option = nil %}
+    {% for option in product.options_with_values %}
+      {% assign option_name_lower = option.name | downcase %}
+      {% if option_name_lower == 'color' or option_name_lower == 'colour' %}
+        {% assign color_option = option %}
+      {% endif %}
+    {% endfor %}
+
+    {% if color_option and color_option.values.size > 1 %}
+      <div class="product-card__swatches">
+        {% for value in color_option.values %}
+          {% assign swatch_color = value | downcase | replace: ' ', '' %}
+          <a
+            href="{{ product.url }}?variant={{ product.variants[forloop.index0].id }}"
+            class="product-card__swatch {% if forloop.first %}is-active{% endif %}"
+            style="background-color: {{ swatch_color }};"
+            title="{{ value }}"
+            aria-label="{{ value }}"
+          ></a>
+        {% endfor %}
+        {% if color_option.values.size > 5 %}
+          <span class="product-card__swatch-more">+{{ color_option.values.size | minus: 5 }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
   </div>
-</a>
+</div>

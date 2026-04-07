@@ -1,0 +1,24 @@
+<section class="account-page section-padding">
+  <div class="page-width">
+    <div class="account-form">
+      <h1 class="account-form__title">Activate Account</h1>
+      <p class="account-form__subtitle">Create your password to activate your account.</p>
+
+      {% form 'activate_customer_password' %}
+        {{ form.errors | default_errors }}
+
+        <div class="form-field">
+          <label for="ActivatePassword" class="form-label">Password</label>
+          <input type="password" name="customer[password]" id="ActivatePassword" class="form-input" autocomplete="new-password" required>
+        </div>
+
+        <div class="form-field">
+          <label for="ActivatePasswordConfirm" class="form-label">Confirm Password</label>
+          <input type="password" name="customer[password_confirmation]" id="ActivatePasswordConfirm" class="form-input" autocomplete="new-password" required>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--large account-form__submit">Activate Account</button>
+      {% endform %}
+    </div>
+  </div>
+</section>

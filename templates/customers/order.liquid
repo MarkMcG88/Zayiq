@@ -1,0 +1,80 @@
+<section class="account-page section-padding">
+  <div class="page-width">
+    <div class="account-dashboard">
+      <p style="margin-bottom: 8px;"><a href="/account" style="opacity: 0.5; font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.04em;">&larr; Back to Account</a></p>
+      <h1 style="margin-bottom: 8px;">Order {{ order.name }}</h1>
+      <p style="opacity: 0.5; margin-bottom: 40px;">Placed on {{ order.created_at | date: '%B %d, %Y at %I:%M %p' }}</p>
+
+      <div class="account-dashboard__grid">
+        <div class="account-dashboard__content" style="grid-column: 1 / -1;">
+          <table class="account-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>SKU</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for line_item in order.line_items %}
+                <tr>
+                  <td>
+                    <div class="cart-item__info">
+                      {% if line_item.image %}
+                        <div class="cart-item__image">
+                          <img src="{{ line_item.image | image_url: width: 200 }}" alt="{{ line_item.title | escape }}" loading="lazy">
+                        </div>
+                      {% endif %}
+                      <div>
+                        <p class="cart-item__title">{{ line_item.title }}</p>
+                        {% if line_item.variant.title != 'Default Title' %}
+                          <p class="cart-item__variant">{{ line_item.variant.title }}</p>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </td>
+                  <td>{{ line_item.sku | default: '-' }}</td>
+                  <td>{{ line_item.price | money }}</td>
+                  <td>{{ line_item.quantity }}</td>
+                  <td>{{ line_item.line_price | money }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-top: 40px;">
+            <div>
+              <h4 style="margin-bottom: 12px; font-size: 0.75rem; letter-spacing: 0.1em; opacity: 0.4;">Shipping Address</h4>
+              {{ order.shipping_address | format_address }}
+            </div>
+            <div>
+              <h4 style="margin-bottom: 12px; font-size: 0.75rem; letter-spacing: 0.1em; opacity: 0.4;">Payment Status</h4>
+              <span class="account-badge">{{ order.financial_status_label }}</span>
+            </div>
+            <div>
+              <h4 style="margin-bottom: 12px; font-size: 0.75rem; letter-spacing: 0.1em; opacity: 0.4;">Order Summary</h4>
+              <div style="font-size: 0.9375rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                  <span>Subtotal</span><span>{{ order.subtotal_price | money }}</span>
+                </div>
+                {% for shipping_method in order.shipping_methods %}
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span>Shipping ({{ shipping_method.title }})</span><span>{{ shipping_method.price | money }}</span>
+                  </div>
+                {% endfor %}
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                  <span>Tax</span><span>{{ order.tax_price | money }}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 1.125rem; margin-top: 12px; padding-top: 12px; border-top: 2px solid var(--color-text);">
+                  <span>Total</span><span>{{ order.total_price | money }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

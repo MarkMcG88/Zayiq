@@ -1,4 +1,12 @@
-<section class="collection-banner section-padding">
+{% paginate collection.products by 24 %}
+
+<section class="section-padding--tight">
+  <div class="page-width">
+    {% render 'breadcrumbs' %}
+  </div>
+</section>
+
+<section class="collection-banner section-padding--tight">
   <div class="page-width">
     <h1 class="collection-banner__title">{{ collection.title }}</h1>
     {% if collection.description != blank %}
@@ -9,34 +17,210 @@
 
 <section class="collection-grid section-padding" style="padding-top: 0;">
   <div class="page-width">
-    <div class="collection-grid__filters">
-      <p class="collection-grid__count">{{ collection.products_count }} {{ collection.products_count | pluralize: 'product', 'products' }}</p>
-      <div class="collection-grid__sort">
-        {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
-        <select name="sort_by" onchange="window.location.href = '{{ collection.url }}?sort_by=' + this.value;">
-          {% for option in collection.sort_options %}
-            <option value="{{ option.value }}" {% if option.value == sort_by %}selected{% endif %}>
-              {{ option.name }}
-            </option>
-          {% endfor %}
-        </select>
+    <div class="collection-toolbar">
+      <div class="collection-toolbar__left">
+        <button class="collection-toolbar__filter-toggle" id="FilterToggle" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/></svg>
+          Filter{% if current_tags.size > 0 %} ({{ current_tags.size }}){% endif %}
+        </button>
+        <p class="collection-toolbar__count">{{ collection.products_count }} {{ collection.products_count | pluralize: 'product', 'products' }}</p>
+      </div>
+
+      <div class="collection-toolbar__right">
+        <div class="collection-toolbar__sort">
+          <label for="SortBy" class="visually-hidden">Sort by</label>
+          {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+          <select id="SortBy" name="sort_by" data-sort-select>
+            {% for option in collection.sort_options %}
+              <option value="{{ option.value }}" {% if option.value == sort_by %}selected{% endif %}>
+                {{ option.name }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="collection-toolbar__view">
+          <button class="collection-toolbar__view-btn is-active" data-view="grid-4" aria-label="4 column grid">
+            <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><rect x="0" y="0" width="3" height="3"/><rect x="4.33" y="0" width="3" height="3"/><rect x="8.66" y="0" width="3" height="3"/><rect x="13" y="0" width="3" height="3"/><rect x="0" y="4.33" width="3" height="3"/><rect x="4.33" y="4.33" width="3" height="3"/><rect x="8.66" y="4.33" width="3" height="3"/><rect x="13" y="4.33" width="3" height="3"/></svg>
+          </button>
+          <button class="collection-toolbar__view-btn" data-view="grid-2" aria-label="2 column grid">
+            <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><rect x="0" y="0" width="7" height="7"/><rect x="9" y="0" width="7" height="7"/><rect x="0" y="9" width="7" height="7"/><rect x="9" y="9" width="7" height="7"/></svg>
+          </button>
+        </div>
       </div>
     </div>
 
-    <div class="grid grid--4">
-      {% for product in collection.products %}
-        {% render 'product-card', product: product %}
-      {% else %}
-        <p>No products found in this collection.</p>
-      {% endfor %}
-    </div>
-
-    {% if paginate.pages > 1 %}
-      {% paginate collection.products by 12 %}
-        <div style="text-align: center; margin-top: 48px;">
-          {{ paginate | default_pagination }}
+    <div class="collection-layout">
+      <aside class="collection-filters" id="CollectionFilters" aria-hidden="true">
+        <div class="collection-filters__header">
+          <h3>Filters</h3>
+          <button class="collection-filters__close" id="FilterClose" aria-label="Close filters">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
         </div>
-      {% endpaginate %}
-    {% endif %}
+
+        {% if current_tags.size > 0 %}
+          <div class="collection-filters__active">
+            <p class="collection-filters__label">Active Filters:</p>
+            {% for tag in current_tags %}
+              <a href="{{ collection.url }}" class="collection-filters__active-tag">
+                {{ tag }}
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </a>
+            {% endfor %}
+            <a href="{{ collection.url }}" class="collection-filters__clear">Clear All</a>
+          </div>
+        {% endif %}
+
+        {% comment %} Availability filter {% endcomment %}
+        <div class="collection-filter-group">
+          <button class="collection-filter-group__toggle" data-filter-toggle aria-expanded="true">
+            Availability
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="collection-filter-group__content">
+            <label class="collection-filter__checkbox">
+              <input type="checkbox" data-filter-available>
+              <span class="collection-filter__checkmark"></span>
+              In Stock
+            </label>
+          </div>
+        </div>
+
+        {% comment %} Price filter {% endcomment %}
+        <div class="collection-filter-group">
+          <button class="collection-filter-group__toggle" data-filter-toggle aria-expanded="true">
+            Price
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="collection-filter-group__content">
+            <div class="collection-filter__price-ranges">
+              {% assign price_tags = 'Under $25,Under $50,Under $100,$100+' | split: ',' %}
+              {% for price_tag in price_tags %}
+                <a href="{{ collection.url }}/{{ price_tag | handleize }}" class="collection-filter__option {% if current_tags contains price_tag %}is-active{% endif %}">
+                  {{ price_tag }}
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Dynamic tag-based filters for Size, Color, etc. {% endcomment %}
+        {% for product_option in collection.products.first.options %}
+          {% assign option_lower = product_option | downcase %}
+          <div class="collection-filter-group">
+            <button class="collection-filter-group__toggle" data-filter-toggle aria-expanded="true">
+              {{ product_option }}
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="collection-filter-group__content">
+              {% if option_lower == 'color' or option_lower == 'colour' %}
+                <div class="collection-filter__swatches">
+                  {% assign seen_colors = '' %}
+                  {% for product in collection.products %}
+                    {% for variant in product.variants %}
+                      {% assign color_value = variant.option1 %}
+                      {% if product.options.first == product_option %}
+                        {% assign color_value = variant.option1 %}
+                      {% elsif product.options[1] == product_option %}
+                        {% assign color_value = variant.option2 %}
+                      {% elsif product.options.last == product_option %}
+                        {% assign color_value = variant.option3 %}
+                      {% endif %}
+                      {% unless seen_colors contains color_value %}
+                        {% assign seen_colors = seen_colors | append: color_value | append: ',' %}
+                        <a
+                          href="{{ collection.url }}/{{ color_value | handleize }}"
+                          class="collection-filter__swatch {% if current_tags contains color_value %}is-active{% endif %}"
+                          style="background-color: {{ color_value | downcase | replace: ' ', '' }};"
+                          title="{{ color_value }}"
+                        >
+                          <span class="visually-hidden">{{ color_value }}</span>
+                        </a>
+                      {% endunless %}
+                    {% endfor %}
+                  {% endfor %}
+                </div>
+              {% elsif option_lower == 'size' %}
+                <div class="collection-filter__sizes">
+                  {% assign seen_sizes = '' %}
+                  {% for product in collection.products %}
+                    {% for variant in product.variants %}
+                      {% assign size_value = variant.option1 %}
+                      {% if product.options.first == product_option %}
+                        {% assign size_value = variant.option1 %}
+                      {% elsif product.options[1] == product_option %}
+                        {% assign size_value = variant.option2 %}
+                      {% elsif product.options.last == product_option %}
+                        {% assign size_value = variant.option3 %}
+                      {% endif %}
+                      {% unless seen_sizes contains size_value %}
+                        {% assign seen_sizes = seen_sizes | append: size_value | append: ',' %}
+                        <a
+                          href="{{ collection.url }}/{{ size_value | handleize }}"
+                          class="collection-filter__size {% if current_tags contains size_value %}is-active{% endif %}"
+                        >{{ size_value }}</a>
+                      {% endunless %}
+                    {% endfor %}
+                  {% endfor %}
+                </div>
+              {% else %}
+                <div class="collection-filter__list">
+                  {% assign seen_values = '' %}
+                  {% for product in collection.products %}
+                    {% for variant in product.variants %}
+                      {% assign opt_value = variant.option1 %}
+                      {% unless seen_values contains opt_value %}
+                        {% assign seen_values = seen_values | append: opt_value | append: ',' %}
+                        <a
+                          href="{{ collection.url }}/{{ opt_value | handleize }}"
+                          class="collection-filter__option {% if current_tags contains opt_value %}is-active{% endif %}"
+                        >{{ opt_value }}</a>
+                      {% endunless %}
+                    {% endfor %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </aside>
+
+      <div class="collection-products" id="CollectionProducts">
+        <div class="grid grid--4 reveal-stagger" id="ProductGrid">
+          {% for product in collection.products %}
+            {% render 'product-card', product: product %}
+          {% else %}
+            <p style="grid-column: 1 / -1; text-align: center; opacity: 0.5; padding: 60px 0;">No products found in this collection.</p>
+          {% endfor %}
+        </div>
+
+        {% if paginate.pages > 1 %}
+          <nav class="pagination" aria-label="Pagination">
+            {% if paginate.previous %}
+              <a href="{{ paginate.previous.url }}" class="pagination__btn" aria-label="Previous page">&larr;</a>
+            {% endif %}
+
+            {% for part in paginate.parts %}
+              {% if part.is_link %}
+                <a href="{{ part.url }}" class="pagination__page">{{ part.title }}</a>
+              {% else %}
+                {% if part.title == paginate.current_page %}
+                  <span class="pagination__page is-current" aria-current="page">{{ part.title }}</span>
+                {% else %}
+                  <span class="pagination__page pagination__ellipsis">{{ part.title }}</span>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            {% if paginate.next %}
+              <a href="{{ paginate.next.url }}" class="pagination__btn" aria-label="Next page">&rarr;</a>
+            {% endif %}
+          </nav>
+        {% endif %}
+      </div>
+    </div>
   </div>
 </section>
+
+{% endpaginate %}

@@ -10,9 +10,13 @@
         height="1400"
       >
     </div>
+    <div class="hero__overlay" style="background: linear-gradient(160deg, rgba(26,26,26,{{ section.settings.overlay_opacity | divided_by: 100.0 }}) 0%, rgba(26,26,26,{{ section.settings.overlay_opacity | divided_by: 150.0 }}) 50%, rgba(91,46,255,{{ section.settings.overlay_opacity | divided_by: 250.0 }}) 100%);"></div>
+  {% else %}
+    <div class="hero__gradient-bg"></div>
   {% endif %}
 
-  <div class="hero__overlay" style="background: linear-gradient(160deg, rgba(26,26,26,{{ section.settings.overlay_opacity | divided_by: 100.0 }}) 0%, rgba(26,26,26,{{ section.settings.overlay_opacity | divided_by: 150.0 }}) 50%, rgba(91,46,255,{{ section.settings.overlay_opacity | divided_by: 250.0 }}) 100%);"></div>
+  <!-- Decorative background text -->
+  <div class="hero__bg-text" aria-hidden="true">ZAYIQ</div>
 
   <div class="hero__content">
     {% if section.settings.subtitle != blank %}

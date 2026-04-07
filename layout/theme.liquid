@@ -29,6 +29,12 @@
 
   <script>
     document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    var Zayiq = {
+      routes: {
+        search_url: '{{ routes.search_url }}',
+        cart_url: '{{ routes.cart_url }}'
+      }
+    };
   </script>
 </head>
 <body class="template-{{ template.name }}">
@@ -37,11 +43,20 @@
   {% section 'announcement-bar' %}
   {% section 'header' %}
 
+  {% render 'predictive-search' %}
+  {% render 'cart-drawer' %}
+  {% render 'quick-view' %}
+
   <main id="MainContent" role="main">
     {{ content_for_layout }}
   </main>
 
   {% section 'footer' %}
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="BackToTop" aria-label="Back to top" style="display: none;">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
 
   {{ 'theme.js' | asset_url | script_tag }}
 </body>

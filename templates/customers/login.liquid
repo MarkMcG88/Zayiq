@@ -1,0 +1,85 @@
+<section class="account-page section-padding">
+  <div class="page-width">
+    <div class="account-form">
+      <h1 class="account-form__title">Sign In</h1>
+      <p class="account-form__subtitle">Welcome back to Zayiq</p>
+
+      {% form 'customer_login' %}
+        {{ form.errors | default_errors }}
+
+        <div class="form-field">
+          <label for="CustomerEmail" class="form-label">Email</label>
+          <input type="email" name="customer[email]" id="CustomerEmail" class="form-input" autocomplete="email" autocorrect="off" autocapitalize="off" required>
+        </div>
+
+        <div class="form-field">
+          <label for="CustomerPassword" class="form-label">Password</label>
+          <input type="password" name="customer[password]" id="CustomerPassword" class="form-input" autocomplete="current-password" required>
+        </div>
+
+        <p class="account-form__forgot">
+          <a href="#recover" id="RecoverLink">Forgot your password?</a>
+        </p>
+
+        <button type="submit" class="btn btn--primary btn--large account-form__submit">Sign In</button>
+      {% endform %}
+
+      <div id="RecoverForm" class="account-form__recover" style="display: none;">
+        <h2 class="account-form__title" style="font-size: 1.5rem;">Reset Password</h2>
+        <p class="account-form__subtitle">We'll send you an email to reset your password.</p>
+
+        {% form 'recover_customer_password' %}
+          {{ form.errors | default_errors }}
+
+          {% if form.posted_successfully? %}
+            <p class="form-success">We've sent you an email with a link to update your password.</p>
+          {% endif %}
+
+          <div class="form-field">
+            <label for="RecoverEmail" class="form-label">Email</label>
+            <input type="email" name="email" id="RecoverEmail" class="form-input" autocomplete="email" required>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--large account-form__submit">Submit</button>
+        {% endform %}
+
+        <p class="account-form__switch">
+          <a href="#login" id="CancelRecover">Back to login</a>
+        </p>
+      </div>
+
+      <div class="account-form__divider">
+        <span>New to Zayiq?</span>
+      </div>
+
+      <a href="/account/register" class="btn btn--outline btn--large account-form__submit">Create Account</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function(){
+    var recoverLink = document.getElementById('RecoverLink');
+    var cancelRecover = document.getElementById('CancelRecover');
+    var recoverForm = document.getElementById('RecoverForm');
+
+    if (recoverLink) {
+      recoverLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        recoverForm.style.display = 'block';
+        this.closest('form').style.display = 'none';
+      });
+    }
+    if (cancelRecover) {
+      cancelRecover.addEventListener('click', function(e) {
+        e.preventDefault();
+        recoverForm.style.display = 'none';
+        document.querySelector('[data-login-form], form[action*="login"]').style.display = 'block';
+      });
+    }
+
+    if (window.location.hash === '#recover') {
+      if (recoverLink) recoverLink.click();
+    }
+  })();
+</script>
