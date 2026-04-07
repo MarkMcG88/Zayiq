@@ -1,8 +1,8 @@
-<footer class="footer" role="contentinfo">
+<footer class="footer" role="contentinfo" style="background: #1A1A1A; color: #FFFFFF;">
   <div class="page-width">
     <div class="footer__grid">
       <div class="footer__brand">
-        <p class="footer__brand-name">ZAY<span>IQ</span></p>
+        <p class="footer__brand-name">ZAY<span style="color: #FF3C00;">IQ</span></p>
         <p class="footer__brand-desc">{{ section.settings.description | default: 'Bold apparel designed by independent artists. Every piece tells a story.' }}</p>
         <div class="footer__social">
           {% if settings.social_instagram != blank %}
@@ -23,36 +23,47 @@
         </div>
       </div>
 
-      {% for block in section.blocks %}
-        <div {{ block.shopify_attributes }}>
-          <h4 class="footer__heading">{{ block.settings.heading }}</h4>
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <div {{ block.shopify_attributes }}>
+            <h4 class="footer__heading">{{ block.settings.heading }}</h4>
+            <ul class="footer__links">
+              {% assign menu = linklists[block.settings.menu] %}
+              {% if menu != blank %}
+                {% for link in menu.links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+              {% endif %}
+            </ul>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div>
+          <h4 class="footer__heading">Shop</h4>
           <ul class="footer__links">
-            {% assign menu = linklists[block.settings.menu] %}
-            {% if menu != blank %}
-              {% for link in menu.links %}
-                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-              {% endfor %}
-            {% else %}
-              {% comment %} Fallback static links when no menu is assigned {% endcomment %}
-              {% case block.settings.heading %}
-                {% when 'Shop' %}
-                  <li><a href="/collections/all">All Products</a></li>
-                  <li><a href="/collections">Collections</a></li>
-                {% when 'Company' %}
-                  <li><a href="/pages/about">About Us</a></li>
-                  <li><a href="/blogs/artists">Artist Blog</a></li>
-                  <li><a href="/pages/contact">Contact</a></li>
-                {% when 'Support' %}
-                  <li><a href="/pages/shipping">Shipping & Returns</a></li>
-                  <li><a href="/pages/faq">FAQ</a></li>
-                  <li><a href="/pages/size-guide">Size Guide</a></li>
-                  <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
-                  <li><a href="/pages/terms-of-service">Terms of Service</a></li>
-              {% endcase %}
-            {% endif %}
+            <li><a href="/collections/all">All Products</a></li>
+            <li><a href="/collections">Collections</a></li>
           </ul>
         </div>
-      {% endfor %}
+        <div>
+          <h4 class="footer__heading">Company</h4>
+          <ul class="footer__links">
+            <li><a href="/pages/about">About Us</a></li>
+            <li><a href="/blogs/artists">Artist Blog</a></li>
+            <li><a href="/pages/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Support</h4>
+          <ul class="footer__links">
+            <li><a href="/pages/shipping">Shipping & Returns</a></li>
+            <li><a href="/pages/faq">FAQ</a></li>
+            <li><a href="/pages/size-guide">Size Guide</a></li>
+            <li><a href="/policies/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/policies/terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+      {% endif %}
     </div>
 
     <div class="footer__bottom">
@@ -79,8 +90,7 @@
         {
           "type": "link_list",
           "id": "menu",
-          "label": "Menu",
-          "info": "Leave empty to use automatic fallback links based on heading name"
+          "label": "Menu"
         }
       ]
     }
@@ -91,16 +101,6 @@
       "id": "description",
       "label": "Brand description",
       "default": "Bold apparel designed by independent artists. Every piece tells a story."
-    }
-  ],
-  "presets": [
-    {
-      "name": "Footer",
-      "blocks": [
-        { "type": "menu", "settings": { "heading": "Shop" } },
-        { "type": "menu", "settings": { "heading": "Company" } },
-        { "type": "menu", "settings": { "heading": "Support" } }
-      ]
     }
   ]
 }

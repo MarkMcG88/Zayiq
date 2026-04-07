@@ -1,7 +1,7 @@
-<section class="newsletter section-padding reveal">
+<section class="newsletter section-padding reveal" style="background: #1A1A1A; color: #FFFFFF;">
   <div class="page-width">
     <div class="newsletter__inner">
-      <p class="section-label" style="color: var(--color-accent); justify-content: center;">Stay Connected</p>
+      <p class="section-label" style="color: #FF3C00; justify-content: center;">Stay Connected</p>
       <h2 class="newsletter__title">{{ section.settings.heading | default: 'Join the Collective' }}</h2>
       <p class="newsletter__text">{{ section.settings.text | default: 'Be first to know about new artist drops, exclusive pieces, and behind-the-scenes stories.' }}</p>
 
@@ -23,11 +23,11 @@
         </div>
 
         {% if form.posted_successfully? %}
-          <p style="margin-top: 20px; color: var(--color-accent); font-size: 0.875rem;">You're in. Welcome to the collective.</p>
+          <p style="margin-top: 20px; color: #00E5A0; font-size: 0.875rem;">You're in. Welcome to the collective.</p>
         {% endif %}
 
         {% if form.errors %}
-          <p style="margin-top: 20px; color: var(--color-primary); font-size: 0.875rem;">{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</p>
+          <p style="margin-top: 20px; color: #FF3C00; font-size: 0.875rem;">{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</p>
         {% endif %}
       {% endform %}
     </div>
