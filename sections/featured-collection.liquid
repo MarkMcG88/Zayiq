@@ -2,7 +2,7 @@
   <div class="page-width">
     <div class="featured-collection__header reveal">
       <div>
-        <p class="section-label" style="color: #FF3C00;">{{ section.settings.label | default: 'Curated Selection' }}</p>
+        <p class="section-label"><span class="section-label__line" style="background:#1A1A1A;"></span><span style="color:#FF3C00;">{{ section.settings.label | default: 'Curated Selection' }}</span></p>
         <h2 class="featured-collection__title">
           {{ section.settings.title | default: 'Featured' }} <span>{{ section.settings.title_highlight | default: 'Collection' }}</span>
         </h2>

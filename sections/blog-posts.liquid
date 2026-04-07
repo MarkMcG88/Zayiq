@@ -2,7 +2,7 @@
   <div class="page-width">
     <div class="blog-posts__header reveal">
       <div>
-        <p class="section-label" style="color: #FF3C00;">{{ section.settings.label | default: 'From the Studio' }}</p>
+        <p class="section-label"><span class="section-label__line" style="background:#1A1A1A;"></span><span style="color:#FF3C00;">{{ section.settings.label | default: 'From the Studio' }}</span></p>
         <h2>{{ section.settings.title | default: 'Artist' }} <span style="color: #FF3C00;">{{ section.settings.title_highlight | default: 'Stories' }}</span></h2>
       </div>
       {% if section.settings.link_text != blank %}
