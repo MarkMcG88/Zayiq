@@ -1,36 +1,55 @@
 <footer class="footer" role="contentinfo">
   <div class="page-width">
     <div class="footer__grid">
-      <div>
+      <div class="footer__brand">
         <p class="footer__brand-name">ZAY<span>IQ</span></p>
         <p class="footer__brand-desc">{{ section.settings.description | default: 'Bold apparel designed by independent artists. Every piece tells a story.' }}</p>
         <div class="footer__social">
           {% if settings.social_instagram != blank %}
             <a href="{{ settings.social_instagram }}" aria-label="Instagram" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
             </a>
           {% endif %}
           {% if settings.social_tiktok != blank %}
             <a href="{{ settings.social_tiktok }}" aria-label="TikTok" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>
             </a>
           {% endif %}
           {% if settings.social_twitter != blank %}
             <a href="{{ settings.social_twitter }}" aria-label="X / Twitter" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M4 4l6.5 8L4 20h2l5.5-6.5L16 20h4l-6.5-8L20 4h-2l-5.5 6.5L8 4H4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M4 4l6.5 8L4 20h2l5.5-6.5L16 20h4l-6.5-8L20 4h-2l-5.5 6.5L8 4H4z"/></svg>
             </a>
           {% endif %}
         </div>
       </div>
 
       {% for block in section.blocks %}
-        <div>
+        <div {{ block.shopify_attributes }}>
           <h4 class="footer__heading">{{ block.settings.heading }}</h4>
           <ul class="footer__links">
             {% assign menu = linklists[block.settings.menu] %}
-            {% for link in menu.links %}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-            {% endfor %}
+            {% if menu != blank %}
+              {% for link in menu.links %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endfor %}
+            {% else %}
+              {% comment %} Fallback static links when no menu is assigned {% endcomment %}
+              {% case block.settings.heading %}
+                {% when 'Shop' %}
+                  <li><a href="/collections/all">All Products</a></li>
+                  <li><a href="/collections">Collections</a></li>
+                {% when 'Company' %}
+                  <li><a href="/pages/about">About Us</a></li>
+                  <li><a href="/blogs/artists">Artist Blog</a></li>
+                  <li><a href="/pages/contact">Contact</a></li>
+                {% when 'Support' %}
+                  <li><a href="/pages/shipping">Shipping & Returns</a></li>
+                  <li><a href="/pages/faq">FAQ</a></li>
+                  <li><a href="/pages/size-guide">Size Guide</a></li>
+                  <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
+                  <li><a href="/pages/terms-of-service">Terms of Service</a></li>
+              {% endcase %}
+            {% endif %}
           </ul>
         </div>
       {% endfor %}
@@ -61,7 +80,7 @@
           "type": "link_list",
           "id": "menu",
           "label": "Menu",
-          "default": "footer"
+          "info": "Leave empty to use automatic fallback links based on heading name"
         }
       ]
     }
@@ -72,6 +91,16 @@
       "id": "description",
       "label": "Brand description",
       "default": "Bold apparel designed by independent artists. Every piece tells a story."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer",
+      "blocks": [
+        { "type": "menu", "settings": { "heading": "Shop" } },
+        { "type": "menu", "settings": { "heading": "Company" } },
+        { "type": "menu", "settings": { "heading": "Support" } }
+      ]
     }
   ]
 }
