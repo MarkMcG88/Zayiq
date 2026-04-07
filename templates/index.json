@@ -8,9 +8,16 @@
         "description": "Limited collections designed by independent artists. Bold apparel that tells a story.",
         "button_text": "Shop the Drop",
         "button_text_2": "Meet the Artist",
-        "overlay_opacity": 65,
         "show_scroll_hint": true
-      }
+      },
+      "blocks": {
+        "h1": { "type": "image" },
+        "h2": { "type": "image" },
+        "h3": { "type": "image" },
+        "h4": { "type": "image" },
+        "h5": { "type": "image" }
+      },
+      "block_order": ["h1", "h2", "h3", "h4", "h5"]
     },
     "brand-ticker": {
       "type": "brand-ticker",

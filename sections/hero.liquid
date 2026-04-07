@@ -1,45 +1,48 @@
 <section class="hero">
-  {% if section.settings.image != blank %}
-    <div class="hero__media">
-      <img
-        src="{{ section.settings.image | image_url: width: 2400 }}"
-        alt="{{ section.settings.image.alt | default: section.settings.heading }}"
-        loading="eager"
-        fetchpriority="high"
-        width="2400"
-        height="1400"
-      >
+  <div class="hero__gradient-bg"></div>
+
+  <div class="hero__split">
+    <div class="hero__text">
+      {% if section.settings.subtitle != blank %}
+        <p class="hero__subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+
+      <h1 class="hero__title">{{ section.settings.heading }}</h1>
+
+      {% if section.settings.description != blank %}
+        <p class="hero__description">{{ section.settings.description }}</p>
+      {% endif %}
+
+      <div class="hero__actions">
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link }}" class="btn btn--primary btn--large">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+        {% if section.settings.button_text_2 != blank %}
+          <a href="{{ section.settings.button_link_2 }}" class="btn btn--outline-light btn--large">
+            {{ section.settings.button_text_2 }}
+          </a>
+        {% endif %}
+      </div>
     </div>
-    <div class="hero__overlay" style="background: linear-gradient(160deg, rgba(26,26,26,{{ section.settings.overlay_opacity | divided_by: 100.0 }}) 0%, rgba(26,26,26,{{ section.settings.overlay_opacity | divided_by: 150.0 }}) 50%, rgba(91,46,255,{{ section.settings.overlay_opacity | divided_by: 250.0 }}) 100%);"></div>
-  {% else %}
-    <div class="hero__gradient-bg"></div>
-  {% endif %}
 
-  <!-- Decorative background text -->
-  <div class="hero__bg-text" aria-hidden="true">ZAYIQ</div>
-
-  <div class="hero__content">
-    {% if section.settings.subtitle != blank %}
-      <p class="hero__subtitle">{{ section.settings.subtitle }}</p>
-    {% endif %}
-
-    <h1 class="hero__title">{{ section.settings.heading }}</h1>
-
-    {% if section.settings.description != blank %}
-      <p class="hero__description">{{ section.settings.description }}</p>
-    {% endif %}
-
-    <div class="hero__actions">
-      {% if section.settings.button_text != blank %}
-        <a href="{{ section.settings.button_link }}" class="btn btn--primary btn--large">
-          {{ section.settings.button_text }}
-        </a>
-      {% endif %}
-      {% if section.settings.button_text_2 != blank %}
-        <a href="{{ section.settings.button_link_2 }}" class="btn btn--outline-light btn--large">
-          {{ section.settings.button_text_2 }}
-        </a>
-      {% endif %}
+    <div class="hero__collage">
+      {% for block in section.blocks %}
+        <div class="hero__collage-item hero__collage-item--{{ forloop.index }}" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            <img
+              src="{{ block.settings.image | image_url: width: 800 }}"
+              alt="{{ block.settings.alt | default: 'Hero image' | escape }}"
+              loading="eager"
+              width="800"
+              height="1000"
+            >
+          {% else %}
+            {{ 'product-' | append: forloop.index | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </div>
+      {% endfor %}
     </div>
   </div>
 
@@ -54,22 +57,8 @@
 {% schema %}
 {
   "name": "Hero banner",
+  "max_blocks": 5,
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Background image"
-    },
-    {
-      "type": "range",
-      "id": "overlay_opacity",
-      "label": "Overlay opacity",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "default": 65,
-      "unit": "%"
-    },
     {
       "type": "text",
       "id": "subtitle",
@@ -117,9 +106,34 @@
       "default": true
     }
   ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Collage image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Hero banner"
+      "name": "Hero banner",
+      "blocks": [
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
     }
   ]
 }
