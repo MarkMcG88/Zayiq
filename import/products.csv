@@ -1,76 +1,76 @@
-Handle,Title,Body (HTML),Vendor,Product Category,Type,Tags,Published,Option1 Name,Option1 Value,Option2 Name,Option2 Value,Variant SKU,Variant Grams,Variant Inventory Tracker,Variant Inventory Qty,Variant Inventory Policy,Variant Fulfillment Service,Variant Price,Variant Compare At Price,Variant Requires Shipping,Variant Taxable,Image Src,Image Position,Image Alt Text,SEO Title,SEO Description,Status
-neon-drip-tee,Neon Drip Tee,"<p>Bold graphic tee featuring original drip artwork by artist Kira Voss. Oversized fit, premium 100% organic cotton, screen-printed in London.</p>",Kira Voss,Apparel & Accessories > Clothing > Shirts & Tops,T-Shirts,"graphic-tees, artist-series, kira-voss, new-arrivals",true,Size,S,Color,Black,ZQ-NDT-S-BLK,200,shopify,25,deny,manual,45.00,,true,true,,1,Neon Drip Tee Black,Neon Drip Tee | Zayiq,Bold graphic tee featuring original drip artwork by Kira Voss,active
-neon-drip-tee,,,,,,,,Size,M,Color,Black,ZQ-NDT-M-BLK,200,shopify,30,deny,manual,45.00,,true,true,,,,,,active
-neon-drip-tee,,,,,,,,Size,L,Color,Black,ZQ-NDT-L-BLK,200,shopify,20,deny,manual,45.00,,true,true,,,,,,active
-neon-drip-tee,,,,,,,,Size,XL,Color,Black,ZQ-NDT-XL-BLK,200,shopify,15,deny,manual,45.00,,true,true,,,,,,active
-neon-drip-tee,,,,,,,,Size,S,Color,White,ZQ-NDT-S-WHT,200,shopify,20,deny,manual,45.00,,true,true,,,,,,active
-neon-drip-tee,,,,,,,,Size,M,Color,White,ZQ-NDT-M-WHT,200,shopify,25,deny,manual,45.00,,true,true,,,,,,active
-neon-drip-tee,,,,,,,,Size,L,Color,White,ZQ-NDT-L-WHT,200,shopify,18,deny,manual,45.00,,true,true,,,,,,active
-neon-drip-tee,,,,,,,,Size,XL,Color,White,ZQ-NDT-XL-WHT,200,shopify,12,deny,manual,45.00,,true,true,,,,,,active
-abstract-waves-hoodie,Abstract Waves Hoodie,"<p>Heavyweight hoodie with all-over abstract wave print by artist Marco Diaz. 400gsm French terry, kangaroo pocket, ribbed cuffs. The art wraps around the entire garment.</p>",Marco Diaz,Apparel & Accessories > Clothing > Outerwear > Coats & Jackets,Hoodies,"hoodies, artist-series, marco-diaz, new-arrivals",true,Size,S,Color,Navy,ZQ-AWH-S-NVY,500,shopify,15,deny,manual,89.00,,true,true,,1,Abstract Waves Hoodie Navy,Abstract Waves Hoodie | Zayiq,Heavyweight hoodie with all-over abstract wave print by Marco Diaz,active
-abstract-waves-hoodie,,,,,,,,Size,M,Color,Navy,ZQ-AWH-M-NVY,500,shopify,20,deny,manual,89.00,,true,true,,,,,,active
-abstract-waves-hoodie,,,,,,,,Size,L,Color,Navy,ZQ-AWH-L-NVY,500,shopify,18,deny,manual,89.00,,true,true,,,,,,active
-abstract-waves-hoodie,,,,,,,,Size,XL,Color,Navy,ZQ-AWH-XL-NVY,500,shopify,10,deny,manual,89.00,,true,true,,,,,,active
-abstract-waves-hoodie,,,,,,,,Size,S,Color,Charcoal,ZQ-AWH-S-CHR,500,shopify,12,deny,manual,89.00,,true,true,,,,,,active
-abstract-waves-hoodie,,,,,,,,Size,M,Color,Charcoal,ZQ-AWH-M-CHR,500,shopify,18,deny,manual,89.00,,true,true,,,,,,active
-abstract-waves-hoodie,,,,,,,,Size,L,Color,Charcoal,ZQ-AWH-L-CHR,500,shopify,14,deny,manual,89.00,,true,true,,,,,,active
-abstract-waves-hoodie,,,,,,,,Size,XL,Color,Charcoal,ZQ-AWH-XL-CHR,500,shopify,8,deny,manual,89.00,,true,true,,,,,,active
-splatter-crewneck,Splatter Crewneck,"<p>Relaxed-fit crewneck sweatshirt with hand-splattered paint effect by Lena Park. Each piece is unique. 350gsm cotton blend, pre-washed for softness.</p>",Lena Park,Apparel & Accessories > Clothing > Outerwear > Coats & Jackets,Sweatshirts,"sweatshirts, artist-series, lena-park",true,Size,S,Color,Cream,ZQ-SC-S-CRM,400,shopify,20,deny,manual,75.00,,true,true,,1,Splatter Crewneck Cream,Splatter Crewneck | Zayiq,Relaxed crewneck with hand-splattered paint effect by Lena Park,active
-splatter-crewneck,,,,,,,,Size,M,Color,Cream,ZQ-SC-M-CRM,400,shopify,25,deny,manual,75.00,,true,true,,,,,,active
-splatter-crewneck,,,,,,,,Size,L,Color,Cream,ZQ-SC-L-CRM,400,shopify,20,deny,manual,75.00,,true,true,,,,,,active
-splatter-crewneck,,,,,,,,Size,XL,Color,Cream,ZQ-SC-XL-CRM,400,shopify,10,deny,manual,75.00,,true,true,,,,,,active
-splatter-crewneck,,,,,,,,Size,S,Color,Black,ZQ-SC-S-BLK,400,shopify,18,deny,manual,75.00,,true,true,,,,,,active
-splatter-crewneck,,,,,,,,Size,M,Color,Black,ZQ-SC-M-BLK,400,shopify,22,deny,manual,75.00,,true,true,,,,,,active
-splatter-crewneck,,,,,,,,Size,L,Color,Black,ZQ-SC-L-BLK,400,shopify,16,deny,manual,75.00,,true,true,,,,,,active
-splatter-crewneck,,,,,,,,Size,XL,Color,Black,ZQ-SC-XL-BLK,400,shopify,8,deny,manual,75.00,,true,true,,,,,,active
-fragment-tee,Fragment Tee,"<p>Minimal graphic tee with geometric fragment design by Kira Voss. Regular fit, 180gsm combed cotton, ribbed collar. Art inspired by broken glass and light refraction.</p>",Kira Voss,Apparel & Accessories > Clothing > Shirts & Tops,T-Shirts,"graphic-tees, artist-series, kira-voss",true,Size,S,Color,White,ZQ-FT-S-WHT,180,shopify,30,deny,manual,42.00,,true,true,,1,Fragment Tee White,Fragment Tee | Zayiq,Minimal graphic tee with geometric fragment design by Kira Voss,active
-fragment-tee,,,,,,,,Size,M,Color,White,ZQ-FT-M-WHT,180,shopify,35,deny,manual,42.00,,true,true,,,,,,active
-fragment-tee,,,,,,,,Size,L,Color,White,ZQ-FT-L-WHT,180,shopify,25,deny,manual,42.00,,true,true,,,,,,active
-fragment-tee,,,,,,,,Size,XL,Color,White,ZQ-FT-XL-WHT,180,shopify,15,deny,manual,42.00,,true,true,,,,,,active
-fragment-tee,,,,,,,,Size,S,Color,Grey,ZQ-FT-S-GRY,180,shopify,20,deny,manual,42.00,,true,true,,,,,,active
-fragment-tee,,,,,,,,Size,M,Color,Grey,ZQ-FT-M-GRY,180,shopify,28,deny,manual,42.00,,true,true,,,,,,active
-fragment-tee,,,,,,,,Size,L,Color,Grey,ZQ-FT-L-GRY,180,shopify,18,deny,manual,42.00,,true,true,,,,,,active
-fragment-tee,,,,,,,,Size,XL,Color,Grey,ZQ-FT-XL-GRY,180,shopify,10,deny,manual,42.00,,true,true,,,,,,active
-blueprint-joggers,Blueprint Joggers,"<p>Tapered joggers with architectural blueprint print by Marco Diaz. Elastic waist with drawcord, zip pockets, 300gsm French terry. The design is inspired by unrealised buildings.</p>",Marco Diaz,Apparel & Accessories > Clothing > Pants,Joggers,"joggers, bottoms, artist-series, marco-diaz, new-arrivals",true,Size,S,Color,Black,ZQ-BJ-S-BLK,350,shopify,20,deny,manual,68.00,,true,true,,1,Blueprint Joggers Black,Blueprint Joggers | Zayiq,Tapered joggers with architectural blueprint print by Marco Diaz,active
-blueprint-joggers,,,,,,,,Size,M,Color,Black,ZQ-BJ-M-BLK,350,shopify,25,deny,manual,68.00,,true,true,,,,,,active
-blueprint-joggers,,,,,,,,Size,L,Color,Black,ZQ-BJ-L-BLK,350,shopify,20,deny,manual,68.00,,true,true,,,,,,active
-blueprint-joggers,,,,,,,,Size,XL,Color,Black,ZQ-BJ-XL-BLK,350,shopify,12,deny,manual,68.00,,true,true,,,,,,active
-blueprint-joggers,,,,,,,,Size,S,Color,Stone,ZQ-BJ-S-STN,350,shopify,15,deny,manual,68.00,,true,true,,,,,,active
-blueprint-joggers,,,,,,,,Size,M,Color,Stone,ZQ-BJ-M-STN,350,shopify,20,deny,manual,68.00,,true,true,,,,,,active
-blueprint-joggers,,,,,,,,Size,L,Color,Stone,ZQ-BJ-L-STN,350,shopify,16,deny,manual,68.00,,true,true,,,,,,active
-blueprint-joggers,,,,,,,,Size,XL,Color,Stone,ZQ-BJ-XL-STN,350,shopify,8,deny,manual,68.00,,true,true,,,,,,active
-wildflower-oversized-tee,Wildflower Oversized Tee,"<p>Boxy oversized tee with hand-drawn wildflower illustration by Lena Park. Drop shoulder, 220gsm heavy cotton, printed using eco-friendly water-based inks.</p>",Lena Park,Apparel & Accessories > Clothing > Shirts & Tops,T-Shirts,"graphic-tees, artist-series, lena-park, new-arrivals",true,Size,S,Color,Sage,ZQ-WOT-S-SGE,220,shopify,18,deny,manual,48.00,,true,true,,1,Wildflower Oversized Tee Sage,Wildflower Oversized Tee | Zayiq,Boxy oversized tee with hand-drawn wildflower illustration by Lena Park,active
-wildflower-oversized-tee,,,,,,,,Size,M,Color,Sage,ZQ-WOT-M-SGE,220,shopify,22,deny,manual,48.00,,true,true,,,,,,active
-wildflower-oversized-tee,,,,,,,,Size,L,Color,Sage,ZQ-WOT-L-SGE,220,shopify,16,deny,manual,48.00,,true,true,,,,,,active
-wildflower-oversized-tee,,,,,,,,Size,XL,Color,Sage,ZQ-WOT-XL-SGE,220,shopify,10,deny,manual,48.00,,true,true,,,,,,active
-wildflower-oversized-tee,,,,,,,,Size,S,Color,Off White,ZQ-WOT-S-OWH,220,shopify,15,deny,manual,48.00,,true,true,,,,,,active
-wildflower-oversized-tee,,,,,,,,Size,M,Color,Off White,ZQ-WOT-M-OWH,220,shopify,20,deny,manual,48.00,,true,true,,,,,,active
-wildflower-oversized-tee,,,,,,,,Size,L,Color,Off White,ZQ-WOT-L-OWH,220,shopify,14,deny,manual,48.00,,true,true,,,,,,active
-wildflower-oversized-tee,,,,,,,,Size,XL,Color,Off White,ZQ-WOT-XL-OWH,220,shopify,8,deny,manual,48.00,,true,true,,,,,,active
-noise-cap,Noise Cap,"<p>Structured 6-panel cap with embroidered noise pattern by Kira Voss. Adjustable strap, curved brim, cotton twill. One size fits most.</p>",Kira Voss,Apparel & Accessories > Clothing Accessories > Hats,Accessories,"accessories, caps, artist-series, kira-voss",true,Size,One Size,Color,Black,ZQ-NC-OS-BLK,120,shopify,40,deny,manual,35.00,,true,true,,1,Noise Cap Black,Noise Cap | Zayiq,Structured 6-panel cap with embroidered noise pattern by Kira Voss,active
-noise-cap,,,,,,,,Size,One Size,Color,White,ZQ-NC-OS-WHT,120,shopify,30,deny,manual,35.00,,true,true,,,,,,active
-noise-cap,,,,,,,,Size,One Size,Color,Navy,ZQ-NC-OS-NVY,120,shopify,25,deny,manual,35.00,,true,true,,,,,,active
-signal-tote,Signal Tote,"<p>Large canvas tote bag with bold signal graphic by Marco Diaz. Heavy 16oz canvas, internal pocket, reinforced handles. Perfect for everyday carry.</p>",Marco Diaz,Apparel & Accessories > Handbags Wallets & Cases,Accessories,"accessories, bags, artist-series, marco-diaz",true,Size,One Size,Color,Natural,ZQ-ST-OS-NAT,300,shopify,35,deny,manual,38.00,,true,true,,1,Signal Tote Natural,Signal Tote | Zayiq,Large canvas tote bag with bold signal graphic by Marco Diaz,active
-signal-tote,,,,,,,,Size,One Size,Color,Black,ZQ-ST-OS-BLK,300,shopify,30,deny,manual,38.00,,true,true,,,,,,active
-studio-socks-3-pack,Studio Socks 3-Pack,"<p>Set of three pairs of crew socks with unique artist patterns. Each pair features a different design. Combed cotton blend, reinforced toe and heel.</p>",Zayiq,Apparel & Accessories > Clothing > Underwear & Socks > Socks,Accessories,"accessories, socks, essentials",true,Size,S/M,Color,Mixed,ZQ-SS-SM-MIX,100,shopify,40,deny,manual,24.00,,true,true,,1,Studio Socks 3-Pack,Studio Socks 3-Pack | Zayiq,Three pairs of crew socks with unique artist patterns,active
-studio-socks-3-pack,,,,,,,,Size,L/XL,Color,Mixed,ZQ-SS-LXL-MIX,100,shopify,35,deny,manual,24.00,,true,true,,,,,,active
-concrete-hoodie,Concrete Hoodie,"<p>Minimalist hoodie with subtle concrete texture print by Lena Park. Oversized fit, 380gsm cotton, split kangaroo pocket. The texture is inspired by brutalist architecture.</p>",Lena Park,Apparel & Accessories > Clothing > Outerwear > Coats & Jackets,Hoodies,"hoodies, artist-series, lena-park, sale",true,Size,S,Color,Grey,ZQ-CH-S-GRY,480,shopify,8,deny,manual,79.00,95.00,true,true,,1,Concrete Hoodie Grey,Concrete Hoodie | Zayiq,Minimalist hoodie with concrete texture print by Lena Park,active
-concrete-hoodie,,,,,,,,Size,M,Color,Grey,ZQ-CH-M-GRY,480,shopify,12,deny,manual,79.00,95.00,true,true,,,,,,active
-concrete-hoodie,,,,,,,,Size,L,Color,Grey,ZQ-CH-L-GRY,480,shopify,10,deny,manual,79.00,95.00,true,true,,,,,,active
-concrete-hoodie,,,,,,,,Size,XL,Color,Grey,ZQ-CH-XL-GRY,480,shopify,5,deny,manual,79.00,95.00,true,true,,,,,,active
-concrete-hoodie,,,,,,,,Size,S,Color,Black,ZQ-CH-S-BLK,480,shopify,6,deny,manual,79.00,95.00,true,true,,,,,,active
-concrete-hoodie,,,,,,,,Size,M,Color,Black,ZQ-CH-M-BLK,480,shopify,10,deny,manual,79.00,95.00,true,true,,,,,,active
-concrete-hoodie,,,,,,,,Size,L,Color,Black,ZQ-CH-L-BLK,480,shopify,8,deny,manual,79.00,95.00,true,true,,,,,,active
-concrete-hoodie,,,,,,,,Size,XL,Color,Black,ZQ-CH-XL-BLK,480,shopify,4,deny,manual,79.00,95.00,true,true,,,,,,active
-pulse-shorts,Pulse Shorts,"<p>Relaxed mesh-lined shorts with pulse wave graphic by Marco Diaz. Elastic waist, side pockets, quick-dry fabric. Perfect for studio sessions or street wear.</p>",Marco Diaz,Apparel & Accessories > Clothing > Shorts,Shorts,"shorts, bottoms, artist-series, marco-diaz",true,Size,S,Color,Black,ZQ-PS-S-BLK,250,shopify,20,deny,manual,55.00,,true,true,,1,Pulse Shorts Black,Pulse Shorts | Zayiq,Relaxed shorts with pulse wave graphic by Marco Diaz,active
-pulse-shorts,,,,,,,,Size,M,Color,Black,ZQ-PS-M-BLK,250,shopify,25,deny,manual,55.00,,true,true,,,,,,active
-pulse-shorts,,,,,,,,Size,L,Color,Black,ZQ-PS-L-BLK,250,shopify,18,deny,manual,55.00,,true,true,,,,,,active
-pulse-shorts,,,,,,,,Size,XL,Color,Black,ZQ-PS-XL-BLK,250,shopify,10,deny,manual,55.00,,true,true,,,,,,active
-echo-long-sleeve,Echo Long Sleeve,"<p>Fitted long-sleeve tee with echo gradient print by Kira Voss. 200gsm cotton, thumb holes at cuffs, extended length. The design plays with colour repetition and decay.</p>",Kira Voss,Apparel & Accessories > Clothing > Shirts & Tops,T-Shirts,"graphic-tees, long-sleeves, artist-series, kira-voss, sale",true,Size,S,Color,Black,ZQ-ELS-S-BLK,210,shopify,12,deny,manual,49.00,58.00,true,true,,1,Echo Long Sleeve Black,Echo Long Sleeve | Zayiq,Fitted long-sleeve with echo gradient print by Kira Voss,active
-echo-long-sleeve,,,,,,,,Size,M,Color,Black,ZQ-ELS-M-BLK,210,shopify,18,deny,manual,49.00,58.00,true,true,,,,,,active
-echo-long-sleeve,,,,,,,,Size,L,Color,Black,ZQ-ELS-L-BLK,210,shopify,14,deny,manual,49.00,58.00,true,true,,,,,,active
-echo-long-sleeve,,,,,,,,Size,XL,Color,Black,ZQ-ELS-XL-BLK,210,shopify,8,deny,manual,49.00,58.00,true,true,,,,,,active
-echo-long-sleeve,,,,,,,,Size,S,Color,Bone,ZQ-ELS-S-BNE,210,shopify,10,deny,manual,49.00,58.00,true,true,,,,,,active
-echo-long-sleeve,,,,,,,,Size,M,Color,Bone,ZQ-ELS-M-BNE,210,shopify,15,deny,manual,49.00,58.00,true,true,,,,,,active
-echo-long-sleeve,,,,,,,,Size,L,Color,Bone,ZQ-ELS-L-BNE,210,shopify,12,deny,manual,49.00,58.00,true,true,,,,,,active
-echo-long-sleeve,,,,,,,,Size,XL,Color,Bone,ZQ-ELS-XL-BNE,210,shopify,6,deny,manual,49.00,58.00,true,true,,,,,,active
+Handle,Title,Body (HTML),Vendor,Type,Tags,Published,Option1 Name,Option1 Value,Option2 Name,Option2 Value,Variant SKU,Variant Grams,Variant Inventory Tracker,Variant Inventory Qty,Variant Inventory Policy,Variant Fulfillment Service,Variant Price,Variant Compare At Price,Variant Requires Shipping,Variant Taxable,Status
+neon-drip-tee,Neon Drip Tee,"<p>Bold graphic tee featuring original drip artwork by artist Kira Voss. Oversized fit, premium 100% organic cotton, screen-printed in London.</p>",Kira Voss,T-Shirts,"graphic-tees, artist-series, kira-voss, new-arrivals",true,Size,S,Color,Black,ZQ-NDT-S-BLK,200,shopify,25,deny,manual,45.00,,true,true,active
+neon-drip-tee,,,,,,true,Size,M,Color,Black,ZQ-NDT-M-BLK,200,shopify,30,deny,manual,45.00,,true,true,active
+neon-drip-tee,,,,,,true,Size,L,Color,Black,ZQ-NDT-L-BLK,200,shopify,20,deny,manual,45.00,,true,true,active
+neon-drip-tee,,,,,,true,Size,XL,Color,Black,ZQ-NDT-XL-BLK,200,shopify,15,deny,manual,45.00,,true,true,active
+neon-drip-tee,,,,,,true,Size,S,Color,White,ZQ-NDT-S-WHT,200,shopify,20,deny,manual,45.00,,true,true,active
+neon-drip-tee,,,,,,true,Size,M,Color,White,ZQ-NDT-M-WHT,200,shopify,25,deny,manual,45.00,,true,true,active
+neon-drip-tee,,,,,,true,Size,L,Color,White,ZQ-NDT-L-WHT,200,shopify,18,deny,manual,45.00,,true,true,active
+neon-drip-tee,,,,,,true,Size,XL,Color,White,ZQ-NDT-XL-WHT,200,shopify,12,deny,manual,45.00,,true,true,active
+abstract-waves-hoodie,Abstract Waves Hoodie,"<p>Heavyweight hoodie with all-over abstract wave print by artist Marco Diaz. 400gsm French terry, kangaroo pocket, ribbed cuffs.</p>",Marco Diaz,Hoodies,"hoodies, artist-series, marco-diaz, new-arrivals",true,Size,S,Color,Navy,ZQ-AWH-S-NVY,500,shopify,15,deny,manual,89.00,,true,true,active
+abstract-waves-hoodie,,,,,,true,Size,M,Color,Navy,ZQ-AWH-M-NVY,500,shopify,20,deny,manual,89.00,,true,true,active
+abstract-waves-hoodie,,,,,,true,Size,L,Color,Navy,ZQ-AWH-L-NVY,500,shopify,18,deny,manual,89.00,,true,true,active
+abstract-waves-hoodie,,,,,,true,Size,XL,Color,Navy,ZQ-AWH-XL-NVY,500,shopify,10,deny,manual,89.00,,true,true,active
+abstract-waves-hoodie,,,,,,true,Size,S,Color,Charcoal,ZQ-AWH-S-CHR,500,shopify,12,deny,manual,89.00,,true,true,active
+abstract-waves-hoodie,,,,,,true,Size,M,Color,Charcoal,ZQ-AWH-M-CHR,500,shopify,18,deny,manual,89.00,,true,true,active
+abstract-waves-hoodie,,,,,,true,Size,L,Color,Charcoal,ZQ-AWH-L-CHR,500,shopify,14,deny,manual,89.00,,true,true,active
+abstract-waves-hoodie,,,,,,true,Size,XL,Color,Charcoal,ZQ-AWH-XL-CHR,500,shopify,8,deny,manual,89.00,,true,true,active
+splatter-crewneck,Splatter Crewneck,"<p>Relaxed-fit crewneck sweatshirt with hand-splattered paint effect by Lena Park. Each piece is unique. 350gsm cotton blend, pre-washed for softness.</p>",Lena Park,Sweatshirts,"sweatshirts, artist-series, lena-park",true,Size,S,Color,Cream,ZQ-SC-S-CRM,400,shopify,20,deny,manual,75.00,,true,true,active
+splatter-crewneck,,,,,,true,Size,M,Color,Cream,ZQ-SC-M-CRM,400,shopify,25,deny,manual,75.00,,true,true,active
+splatter-crewneck,,,,,,true,Size,L,Color,Cream,ZQ-SC-L-CRM,400,shopify,20,deny,manual,75.00,,true,true,active
+splatter-crewneck,,,,,,true,Size,XL,Color,Cream,ZQ-SC-XL-CRM,400,shopify,10,deny,manual,75.00,,true,true,active
+splatter-crewneck,,,,,,true,Size,S,Color,Black,ZQ-SC-S-BLK,400,shopify,18,deny,manual,75.00,,true,true,active
+splatter-crewneck,,,,,,true,Size,M,Color,Black,ZQ-SC-M-BLK,400,shopify,22,deny,manual,75.00,,true,true,active
+splatter-crewneck,,,,,,true,Size,L,Color,Black,ZQ-SC-L-BLK,400,shopify,16,deny,manual,75.00,,true,true,active
+splatter-crewneck,,,,,,true,Size,XL,Color,Black,ZQ-SC-XL-BLK,400,shopify,8,deny,manual,75.00,,true,true,active
+fragment-tee,Fragment Tee,"<p>Minimal graphic tee with geometric fragment design by Kira Voss. Regular fit, 180gsm combed cotton, ribbed collar.</p>",Kira Voss,T-Shirts,"graphic-tees, artist-series, kira-voss",true,Size,S,Color,White,ZQ-FT-S-WHT,180,shopify,30,deny,manual,42.00,,true,true,active
+fragment-tee,,,,,,true,Size,M,Color,White,ZQ-FT-M-WHT,180,shopify,35,deny,manual,42.00,,true,true,active
+fragment-tee,,,,,,true,Size,L,Color,White,ZQ-FT-L-WHT,180,shopify,25,deny,manual,42.00,,true,true,active
+fragment-tee,,,,,,true,Size,XL,Color,White,ZQ-FT-XL-WHT,180,shopify,15,deny,manual,42.00,,true,true,active
+fragment-tee,,,,,,true,Size,S,Color,Grey,ZQ-FT-S-GRY,180,shopify,20,deny,manual,42.00,,true,true,active
+fragment-tee,,,,,,true,Size,M,Color,Grey,ZQ-FT-M-GRY,180,shopify,28,deny,manual,42.00,,true,true,active
+fragment-tee,,,,,,true,Size,L,Color,Grey,ZQ-FT-L-GRY,180,shopify,18,deny,manual,42.00,,true,true,active
+fragment-tee,,,,,,true,Size,XL,Color,Grey,ZQ-FT-XL-GRY,180,shopify,10,deny,manual,42.00,,true,true,active
+blueprint-joggers,Blueprint Joggers,"<p>Tapered joggers with architectural blueprint print by Marco Diaz. Elastic waist with drawcord, zip pockets, 300gsm French terry.</p>",Marco Diaz,Joggers,"joggers, bottoms, artist-series, marco-diaz, new-arrivals",true,Size,S,Color,Black,ZQ-BJ-S-BLK,350,shopify,20,deny,manual,68.00,,true,true,active
+blueprint-joggers,,,,,,true,Size,M,Color,Black,ZQ-BJ-M-BLK,350,shopify,25,deny,manual,68.00,,true,true,active
+blueprint-joggers,,,,,,true,Size,L,Color,Black,ZQ-BJ-L-BLK,350,shopify,20,deny,manual,68.00,,true,true,active
+blueprint-joggers,,,,,,true,Size,XL,Color,Black,ZQ-BJ-XL-BLK,350,shopify,12,deny,manual,68.00,,true,true,active
+blueprint-joggers,,,,,,true,Size,S,Color,Stone,ZQ-BJ-S-STN,350,shopify,15,deny,manual,68.00,,true,true,active
+blueprint-joggers,,,,,,true,Size,M,Color,Stone,ZQ-BJ-M-STN,350,shopify,20,deny,manual,68.00,,true,true,active
+blueprint-joggers,,,,,,true,Size,L,Color,Stone,ZQ-BJ-L-STN,350,shopify,16,deny,manual,68.00,,true,true,active
+blueprint-joggers,,,,,,true,Size,XL,Color,Stone,ZQ-BJ-XL-STN,350,shopify,8,deny,manual,68.00,,true,true,active
+wildflower-oversized-tee,Wildflower Oversized Tee,"<p>Boxy oversized tee with hand-drawn wildflower illustration by Lena Park. Drop shoulder, 220gsm heavy cotton, eco-friendly water-based inks.</p>",Lena Park,T-Shirts,"graphic-tees, artist-series, lena-park, new-arrivals",true,Size,S,Color,Sage,ZQ-WOT-S-SGE,220,shopify,18,deny,manual,48.00,,true,true,active
+wildflower-oversized-tee,,,,,,true,Size,M,Color,Sage,ZQ-WOT-M-SGE,220,shopify,22,deny,manual,48.00,,true,true,active
+wildflower-oversized-tee,,,,,,true,Size,L,Color,Sage,ZQ-WOT-L-SGE,220,shopify,16,deny,manual,48.00,,true,true,active
+wildflower-oversized-tee,,,,,,true,Size,XL,Color,Sage,ZQ-WOT-XL-SGE,220,shopify,10,deny,manual,48.00,,true,true,active
+wildflower-oversized-tee,,,,,,true,Size,S,Color,Off White,ZQ-WOT-S-OWH,220,shopify,15,deny,manual,48.00,,true,true,active
+wildflower-oversized-tee,,,,,,true,Size,M,Color,Off White,ZQ-WOT-M-OWH,220,shopify,20,deny,manual,48.00,,true,true,active
+wildflower-oversized-tee,,,,,,true,Size,L,Color,Off White,ZQ-WOT-L-OWH,220,shopify,14,deny,manual,48.00,,true,true,active
+wildflower-oversized-tee,,,,,,true,Size,XL,Color,Off White,ZQ-WOT-XL-OWH,220,shopify,8,deny,manual,48.00,,true,true,active
+noise-cap,Noise Cap,"<p>Structured 6-panel cap with embroidered noise pattern by Kira Voss. Adjustable strap, curved brim, cotton twill.</p>",Kira Voss,Accessories,"accessories, caps, artist-series, kira-voss",true,Size,One Size,Color,Black,ZQ-NC-OS-BLK,120,shopify,40,deny,manual,35.00,,true,true,active
+noise-cap,,,,,,true,Size,One Size,Color,White,ZQ-NC-OS-WHT,120,shopify,30,deny,manual,35.00,,true,true,active
+noise-cap,,,,,,true,Size,One Size,Color,Navy,ZQ-NC-OS-NVY,120,shopify,25,deny,manual,35.00,,true,true,active
+signal-tote,Signal Tote,"<p>Large canvas tote bag with bold signal graphic by Marco Diaz. Heavy 16oz canvas, internal pocket, reinforced handles.</p>",Marco Diaz,Accessories,"accessories, bags, artist-series, marco-diaz",true,Size,One Size,Color,Natural,ZQ-ST-OS-NAT,300,shopify,35,deny,manual,38.00,,true,true,active
+signal-tote,,,,,,true,Size,One Size,Color,Black,ZQ-ST-OS-BLK,300,shopify,30,deny,manual,38.00,,true,true,active
+studio-socks-3-pack,Studio Socks 3-Pack,"<p>Set of three pairs of crew socks with unique artist patterns. Combed cotton blend, reinforced toe and heel.</p>",Zayiq,Accessories,"accessories, socks, essentials",true,Size,S/M,Color,Mixed,ZQ-SS-SM-MIX,100,shopify,40,deny,manual,24.00,,true,true,active
+studio-socks-3-pack,,,,,,true,Size,L/XL,Color,Mixed,ZQ-SS-LXL-MIX,100,shopify,35,deny,manual,24.00,,true,true,active
+concrete-hoodie,Concrete Hoodie,"<p>Minimalist hoodie with subtle concrete texture print by Lena Park. Oversized fit, 380gsm cotton, split kangaroo pocket.</p>",Lena Park,Hoodies,"hoodies, artist-series, lena-park, sale",true,Size,S,Color,Grey,ZQ-CH-S-GRY,480,shopify,8,deny,manual,79.00,95.00,true,true,active
+concrete-hoodie,,,,,,true,Size,M,Color,Grey,ZQ-CH-M-GRY,480,shopify,12,deny,manual,79.00,95.00,true,true,active
+concrete-hoodie,,,,,,true,Size,L,Color,Grey,ZQ-CH-L-GRY,480,shopify,10,deny,manual,79.00,95.00,true,true,active
+concrete-hoodie,,,,,,true,Size,XL,Color,Grey,ZQ-CH-XL-GRY,480,shopify,5,deny,manual,79.00,95.00,true,true,active
+concrete-hoodie,,,,,,true,Size,S,Color,Black,ZQ-CH-S-BLK,480,shopify,6,deny,manual,79.00,95.00,true,true,active
+concrete-hoodie,,,,,,true,Size,M,Color,Black,ZQ-CH-M-BLK,480,shopify,10,deny,manual,79.00,95.00,true,true,active
+concrete-hoodie,,,,,,true,Size,L,Color,Black,ZQ-CH-L-BLK,480,shopify,8,deny,manual,79.00,95.00,true,true,active
+concrete-hoodie,,,,,,true,Size,XL,Color,Black,ZQ-CH-XL-BLK,480,shopify,4,deny,manual,79.00,95.00,true,true,active
+pulse-shorts,Pulse Shorts,"<p>Relaxed mesh-lined shorts with pulse wave graphic by Marco Diaz. Elastic waist, side pockets, quick-dry fabric.</p>",Marco Diaz,Shorts,"shorts, bottoms, artist-series, marco-diaz",true,Size,S,Color,Black,ZQ-PS-S-BLK,250,shopify,20,deny,manual,55.00,,true,true,active
+pulse-shorts,,,,,,true,Size,M,Color,Black,ZQ-PS-M-BLK,250,shopify,25,deny,manual,55.00,,true,true,active
+pulse-shorts,,,,,,true,Size,L,Color,Black,ZQ-PS-L-BLK,250,shopify,18,deny,manual,55.00,,true,true,active
+pulse-shorts,,,,,,true,Size,XL,Color,Black,ZQ-PS-XL-BLK,250,shopify,10,deny,manual,55.00,,true,true,active
+echo-long-sleeve,Echo Long Sleeve,"<p>Fitted long-sleeve tee with echo gradient print by Kira Voss. 200gsm cotton, thumb holes at cuffs, extended length.</p>",Kira Voss,T-Shirts,"graphic-tees, long-sleeves, artist-series, kira-voss, sale",true,Size,S,Color,Black,ZQ-ELS-S-BLK,210,shopify,12,deny,manual,49.00,58.00,true,true,active
+echo-long-sleeve,,,,,,true,Size,M,Color,Black,ZQ-ELS-M-BLK,210,shopify,18,deny,manual,49.00,58.00,true,true,active
+echo-long-sleeve,,,,,,true,Size,L,Color,Black,ZQ-ELS-L-BLK,210,shopify,14,deny,manual,49.00,58.00,true,true,active
+echo-long-sleeve,,,,,,true,Size,XL,Color,Black,ZQ-ELS-XL-BLK,210,shopify,8,deny,manual,49.00,58.00,true,true,active
+echo-long-sleeve,,,,,,true,Size,S,Color,Bone,ZQ-ELS-S-BNE,210,shopify,10,deny,manual,49.00,58.00,true,true,active
+echo-long-sleeve,,,,,,true,Size,M,Color,Bone,ZQ-ELS-M-BNE,210,shopify,15,deny,manual,49.00,58.00,true,true,active
+echo-long-sleeve,,,,,,true,Size,L,Color,Bone,ZQ-ELS-L-BNE,210,shopify,12,deny,manual,49.00,58.00,true,true,active
+echo-long-sleeve,,,,,,true,Size,XL,Color,Bone,ZQ-ELS-XL-BNE,210,shopify,6,deny,manual,49.00,58.00,true,true,active
