@@ -21,7 +21,7 @@
       <div class="collection-toolbar__left">
         <button class="collection-toolbar__filter-toggle" id="FilterToggle" aria-expanded="false">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/></svg>
-          Filter{% if current_tags.size > 0 %} ({{ current_tags.size }}){% endif %}
+          Filter
         </button>
         <p class="collection-toolbar__count">{{ collection.products_count }} {{ collection.products_count | pluralize: 'product', 'products' }}</p>
       </div>
@@ -59,20 +59,9 @@
           </button>
         </div>
 
-        {% if current_tags.size > 0 %}
-          <div class="collection-filters__active">
-            <p class="collection-filters__label">Active Filters:</p>
-            {% for tag in current_tags %}
-              <a href="{{ collection.url }}" class="collection-filters__active-tag">
-                {{ tag }}
-                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-              </a>
-            {% endfor %}
-            <a href="{{ collection.url }}" class="collection-filters__clear">Clear All</a>
-          </div>
-        {% endif %}
-
-        {% comment %} Availability filter {% endcomment %}
+        {% comment %}
+          Availability filter
+        {% endcomment %}
         <div class="collection-filter-group">
           <button class="collection-filter-group__toggle" data-filter-toggle aria-expanded="true">
             Availability
@@ -87,7 +76,9 @@
           </div>
         </div>
 
-        {% comment %} Price filter {% endcomment %}
+        {% comment %}
+          Price filter
+        {% endcomment %}
         <div class="collection-filter-group">
           <button class="collection-filter-group__toggle" data-filter-toggle aria-expanded="true">
             Price
@@ -95,88 +86,110 @@
           </button>
           <div class="collection-filter-group__content">
             <div class="collection-filter__price-ranges">
-              {% assign price_tags = 'Under $25,Under $50,Under $100,$100+' | split: ',' %}
-              {% for price_tag in price_tags %}
-                <a href="{{ collection.url }}/{{ price_tag | handleize }}" class="collection-filter__option {% if current_tags contains price_tag %}is-active{% endif %}">
-                  {{ price_tag }}
-                </a>
-              {% endfor %}
+              <a href="{{ collection.url }}?sort_by={{ sort_by }}&filter.v.price.lte=25" class="collection-filter__option">Under $25</a>
+              <a href="{{ collection.url }}?sort_by={{ sort_by }}&filter.v.price.lte=50" class="collection-filter__option">Under $50</a>
+              <a href="{{ collection.url }}?sort_by={{ sort_by }}&filter.v.price.lte=100" class="collection-filter__option">Under $100</a>
+              <a href="{{ collection.url }}?sort_by={{ sort_by }}&filter.v.price.gte=100" class="collection-filter__option">$100+</a>
             </div>
           </div>
         </div>
 
-        {% comment %} Dynamic tag-based filters for Size, Color, etc. {% endcomment %}
-        {% for product_option in collection.products.first.options %}
-          {% assign option_lower = product_option | downcase %}
+        {% comment %}
+          Dynamic product option filters — scans ALL products in the collection
+        {% endcomment %}
+        {% assign all_options = '' %}
+        {% for product in collection.products %}
+          {% for option in product.options %}
+            {% unless all_options contains option %}
+              {% if all_options != '' %}{% assign all_options = all_options | append: '|' %}{% endif %}
+              {% assign all_options = all_options | append: option %}
+            {% endunless %}
+          {% endfor %}
+        {% endfor %}
+
+        {% assign option_names = all_options | split: '|' %}
+
+        {% for option_name in option_names %}
+          {% assign option_lower = option_name | downcase %}
+          {% assign seen_values = '' %}
+
           <div class="collection-filter-group">
             <button class="collection-filter-group__toggle" data-filter-toggle aria-expanded="true">
-              {{ product_option }}
+              {{ option_name }}
               <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="collection-filter-group__content">
               {% if option_lower == 'color' or option_lower == 'colour' %}
                 <div class="collection-filter__swatches">
-                  {% assign seen_colors = '' %}
                   {% for product in collection.products %}
-                    {% for variant in product.variants %}
-                      {% assign color_value = variant.option1 %}
-                      {% if product.options.first == product_option %}
-                        {% assign color_value = variant.option1 %}
-                      {% elsif product.options[1] == product_option %}
-                        {% assign color_value = variant.option2 %}
-                      {% elsif product.options.last == product_option %}
-                        {% assign color_value = variant.option3 %}
+                    {% for i in (0..2) %}
+                      {% if product.options[i] == option_name %}
+                        {% for variant in product.variants %}
+                          {% case i %}
+                            {% when 0 %}{% assign opt_val = variant.option1 %}
+                            {% when 1 %}{% assign opt_val = variant.option2 %}
+                            {% when 2 %}{% assign opt_val = variant.option3 %}
+                          {% endcase %}
+                          {% unless seen_values contains opt_val %}
+                            {% assign seen_values = seen_values | append: opt_val | append: '||' %}
+                            {% assign swatch_handle = opt_val | downcase | replace: ' ', '' %}
+                            <a
+                              href="{{ collection.url }}/{{ opt_val | handleize }}"
+                              class="collection-filter__swatch {% if current_tags contains opt_val %}is-active{% endif %}"
+                              style="background-color: {{ swatch_handle }};"
+                              title="{{ opt_val }}"
+                            >
+                              <span class="visually-hidden">{{ opt_val }}</span>
+                            </a>
+                          {% endunless %}
+                        {% endfor %}
                       {% endif %}
-                      {% unless seen_colors contains color_value %}
-                        {% assign seen_colors = seen_colors | append: color_value | append: ',' %}
-                        <a
-                          href="{{ collection.url }}/{{ color_value | handleize }}"
-                          class="collection-filter__swatch {% if current_tags contains color_value %}is-active{% endif %}"
-                          style="background-color: {{ color_value | downcase | replace: ' ', '' }};"
-                          title="{{ color_value }}"
-                        >
-                          <span class="visually-hidden">{{ color_value }}</span>
-                        </a>
-                      {% endunless %}
                     {% endfor %}
                   {% endfor %}
                 </div>
               {% elsif option_lower == 'size' %}
                 <div class="collection-filter__sizes">
-                  {% assign seen_sizes = '' %}
                   {% for product in collection.products %}
-                    {% for variant in product.variants %}
-                      {% assign size_value = variant.option1 %}
-                      {% if product.options.first == product_option %}
-                        {% assign size_value = variant.option1 %}
-                      {% elsif product.options[1] == product_option %}
-                        {% assign size_value = variant.option2 %}
-                      {% elsif product.options.last == product_option %}
-                        {% assign size_value = variant.option3 %}
+                    {% for i in (0..2) %}
+                      {% if product.options[i] == option_name %}
+                        {% for variant in product.variants %}
+                          {% case i %}
+                            {% when 0 %}{% assign opt_val = variant.option1 %}
+                            {% when 1 %}{% assign opt_val = variant.option2 %}
+                            {% when 2 %}{% assign opt_val = variant.option3 %}
+                          {% endcase %}
+                          {% unless seen_values contains opt_val %}
+                            {% assign seen_values = seen_values | append: opt_val | append: '||' %}
+                            <a
+                              href="{{ collection.url }}/{{ opt_val | handleize }}"
+                              class="collection-filter__size {% if current_tags contains opt_val %}is-active{% endif %}"
+                            >{{ opt_val }}</a>
+                          {% endunless %}
+                        {% endfor %}
                       {% endif %}
-                      {% unless seen_sizes contains size_value %}
-                        {% assign seen_sizes = seen_sizes | append: size_value | append: ',' %}
-                        <a
-                          href="{{ collection.url }}/{{ size_value | handleize }}"
-                          class="collection-filter__size {% if current_tags contains size_value %}is-active{% endif %}"
-                        >{{ size_value }}</a>
-                      {% endunless %}
                     {% endfor %}
                   {% endfor %}
                 </div>
               {% else %}
                 <div class="collection-filter__list">
-                  {% assign seen_values = '' %}
                   {% for product in collection.products %}
-                    {% for variant in product.variants %}
-                      {% assign opt_value = variant.option1 %}
-                      {% unless seen_values contains opt_value %}
-                        {% assign seen_values = seen_values | append: opt_value | append: ',' %}
-                        <a
-                          href="{{ collection.url }}/{{ opt_value | handleize }}"
-                          class="collection-filter__option {% if current_tags contains opt_value %}is-active{% endif %}"
-                        >{{ opt_value }}</a>
-                      {% endunless %}
+                    {% for i in (0..2) %}
+                      {% if product.options[i] == option_name %}
+                        {% for variant in product.variants %}
+                          {% case i %}
+                            {% when 0 %}{% assign opt_val = variant.option1 %}
+                            {% when 1 %}{% assign opt_val = variant.option2 %}
+                            {% when 2 %}{% assign opt_val = variant.option3 %}
+                          {% endcase %}
+                          {% unless seen_values contains opt_val %}
+                            {% assign seen_values = seen_values | append: opt_val | append: '||' %}
+                            <a
+                              href="{{ collection.url }}/{{ opt_val | handleize }}"
+                              class="collection-filter__option {% if current_tags contains opt_val %}is-active{% endif %}"
+                            >{{ opt_val }}</a>
+                          {% endunless %}
+                        {% endfor %}
+                      {% endif %}
                     {% endfor %}
                   {% endfor %}
                 </div>
