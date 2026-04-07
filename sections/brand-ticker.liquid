@@ -1,0 +1,41 @@
+<div class="brand-ticker">
+  <div class="brand-ticker__track">
+    {% for i in (1..6) %}
+      {% for block in section.blocks %}
+        <span class="brand-ticker__item">{{ block.settings.text }}</span>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Brand ticker",
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Ticker item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Artist-Designed"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand ticker",
+      "blocks": [
+        { "type": "text", "settings": { "text": "Artist-Designed" } },
+        { "type": "text", "settings": { "text": "Limited Edition" } },
+        { "type": "text", "settings": { "text": "Independent Creators" } },
+        { "type": "text", "settings": { "text": "Bold Apparel" } },
+        { "type": "text", "settings": { "text": "Wear the Art" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

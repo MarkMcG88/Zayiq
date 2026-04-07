@@ -2,16 +2,17 @@
   {% if section.settings.image != blank %}
     <div class="hero__media">
       <img
-        src="{{ section.settings.image | image_url: width: 2000 }}"
+        src="{{ section.settings.image | image_url: width: 2400 }}"
         alt="{{ section.settings.image.alt | default: section.settings.heading }}"
         loading="eager"
-        width="2000"
-        height="1200"
+        fetchpriority="high"
+        width="2400"
+        height="1400"
       >
     </div>
   {% endif %}
 
-  <div class="hero__overlay" style="background: linear-gradient(135deg, rgba(26,26,26,{{ section.settings.overlay_opacity | divided_by: 100.0 }}) 0%, rgba(91,46,255,{{ section.settings.overlay_opacity | divided_by: 200.0 }}) 100%);"></div>
+  <div class="hero__overlay" style="background: linear-gradient(160deg, rgba(26,26,26,{{ section.settings.overlay_opacity | divided_by: 100.0 }}) 0%, rgba(26,26,26,{{ section.settings.overlay_opacity | divided_by: 150.0 }}) 50%, rgba(91,46,255,{{ section.settings.overlay_opacity | divided_by: 250.0 }}) 100%);"></div>
 
   <div class="hero__content">
     {% if section.settings.subtitle != blank %}
@@ -31,12 +32,19 @@
         </a>
       {% endif %}
       {% if section.settings.button_text_2 != blank %}
-        <a href="{{ section.settings.button_link_2 }}" class="btn btn--outline btn--large" style="color: var(--color-text-light); border-color: var(--color-text-light);">
+        <a href="{{ section.settings.button_link_2 }}" class="btn btn--outline-light btn--large">
           {{ section.settings.button_text_2 }}
         </a>
       {% endif %}
     </div>
   </div>
+
+  {% if section.settings.show_scroll_hint %}
+    <div class="hero__scroll-hint">
+      <span></span>
+      Scroll
+    </div>
+  {% endif %}
 </section>
 
 {% schema %}
@@ -55,7 +63,7 @@
       "min": 0,
       "max": 100,
       "step": 5,
-      "default": 60,
+      "default": 65,
       "unit": "%"
     },
     {
@@ -97,6 +105,12 @@
       "type": "url",
       "id": "button_link_2",
       "label": "Second button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_scroll_hint",
+      "label": "Show scroll indicator",
+      "default": true
     }
   ],
   "presets": [

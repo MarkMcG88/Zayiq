@@ -1,33 +1,36 @@
-<section class="newsletter section-padding">
+<section class="newsletter section-padding reveal">
   <div class="page-width">
-    <h2 class="newsletter__title">{{ section.settings.heading | default: 'Join the Collective' }}</h2>
-    <p class="newsletter__text">{{ section.settings.text | default: 'Be first to know about new artist drops, exclusive pieces, and behind-the-scenes stories.' }}</p>
+    <div class="newsletter__inner">
+      <p class="newsletter__label">Stay Connected</p>
+      <h2 class="newsletter__title">{{ section.settings.heading | default: 'Join the Collective' }}</h2>
+      <p class="newsletter__text">{{ section.settings.text | default: 'Be first to know about new artist drops, exclusive pieces, and behind-the-scenes stories.' }}</p>
 
-    {% form 'customer' %}
-      <div class="newsletter__form">
-        <input type="hidden" name="contact[tags]" value="newsletter">
-        <input
-          type="email"
-          name="contact[email]"
-          class="newsletter__input"
-          placeholder="{{ section.settings.placeholder | default: 'Enter your email' }}"
-          required
-          autocomplete="email"
-          aria-label="Email address"
-        >
-        <button type="submit" class="newsletter__submit">
-          {{ section.settings.button_text | default: 'Subscribe' }}
-        </button>
-      </div>
+      {% form 'customer' %}
+        <div class="newsletter__form">
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input
+            type="email"
+            name="contact[email]"
+            class="newsletter__input"
+            placeholder="{{ section.settings.placeholder | default: 'Your email address' }}"
+            required
+            autocomplete="email"
+            aria-label="Email address"
+          >
+          <button type="submit" class="newsletter__submit">
+            {{ section.settings.button_text | default: 'Subscribe' }}
+          </button>
+        </div>
 
-      {% if form.posted_successfully? %}
-        <p style="margin-top: 16px; color: var(--color-accent);">You're in. Welcome to the collective.</p>
-      {% endif %}
+        {% if form.posted_successfully? %}
+          <p style="margin-top: 20px; color: var(--color-accent); font-size: 0.875rem;">You're in. Welcome to the collective.</p>
+        {% endif %}
 
-      {% if form.errors %}
-        <p style="margin-top: 16px; color: var(--color-primary);">{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</p>
-      {% endif %}
-    {% endform %}
+        {% if form.errors %}
+          <p style="margin-top: 20px; color: var(--color-primary); font-size: 0.875rem;">{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</p>
+        {% endif %}
+      {% endform %}
+    </div>
   </div>
 </section>
 
@@ -51,7 +54,7 @@
       "type": "text",
       "id": "placeholder",
       "label": "Input placeholder",
-      "default": "Enter your email"
+      "default": "Your email address"
     },
     {
       "type": "text",

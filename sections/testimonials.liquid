@@ -1,0 +1,46 @@
+<section class="testimonials section-padding reveal">
+  <div class="page-width">
+    <div class="testimonials__inner">
+      <p class="testimonial__quote">
+        {{ section.settings.quote | default: "Zayiq is redefining what it means to wear art. Every collection tells a story worth hearing." }}
+      </p>
+      <p class="testimonial__source">
+        {{ section.settings.source | default: 'Highsnobiety' }}
+        {% if section.settings.source_detail != blank %}
+          <span> — {{ section.settings.source_detail }}</span>
+        {% endif %}
+      </p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonial",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "default": "Zayiq is redefining what it means to wear art. Every collection tells a story worth hearing."
+    },
+    {
+      "type": "text",
+      "id": "source",
+      "label": "Source name",
+      "default": "Highsnobiety"
+    },
+    {
+      "type": "text",
+      "id": "source_detail",
+      "label": "Source detail",
+      "default": "March 2026"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial"
+    }
+  ]
+}
+{% endschema %}

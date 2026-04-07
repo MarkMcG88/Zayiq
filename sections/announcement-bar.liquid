@@ -1,11 +1,15 @@
 {% if section.settings.text != blank %}
   <div class="announcement-bar" role="region" aria-label="Announcement" style="background: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }};">
-    <div class="page-width">
-      {% if section.settings.link != blank %}
-        <a href="{{ section.settings.link }}" style="color: {{ section.settings.text_color }};">{{ section.settings.text }}</a>
-      {% else %}
-        <p>{{ section.settings.text }}</p>
-      {% endif %}
+    <div class="announcement-bar__track">
+      {% for i in (1..8) %}
+        <span class="announcement-bar__item">
+          {% if section.settings.link != blank %}
+            <a href="{{ section.settings.link }}">{{ section.settings.text }}</a>
+          {% else %}
+            {{ section.settings.text }}
+          {% endif %}
+        </span>
+      {% endfor %}
     </div>
   </div>
 {% endif %}

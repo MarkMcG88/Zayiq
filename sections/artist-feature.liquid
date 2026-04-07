@@ -1,13 +1,13 @@
-<section class="artist-feature" style="background: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }};">
+<section class="artist-feature reveal-fade" style="background: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }};">
   <div class="artist-feature__inner">
     <div class="artist-feature__media">
       {% if section.settings.image != blank %}
         <img
-          src="{{ section.settings.image | image_url: width: 1200 }}"
+          src="{{ section.settings.image | image_url: width: 1400 }}"
           alt="{{ section.settings.artist_name | escape }}"
           loading="lazy"
-          width="1200"
-          height="800"
+          width="1400"
+          height="900"
         >
       {% else %}
         {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -21,12 +21,13 @@
 
       <div class="artist-feature__actions">
         {% if section.settings.button_text != blank %}
-          <a href="{{ section.settings.button_link }}" class="btn btn--primary">
+          <a href="{{ section.settings.button_link }}" class="btn btn--primary btn--arrow">
             {{ section.settings.button_text }}
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         {% endif %}
         {% if section.settings.button_text_2 != blank %}
-          <a href="{{ section.settings.button_link_2 }}" class="btn btn--outline" style="color: {{ section.settings.text_color }}; border-color: {{ section.settings.text_color }};">
+          <a href="{{ section.settings.button_link_2 }}" class="btn btn--outline-light">
             {{ section.settings.button_text_2 }}
           </a>
         {% endif %}

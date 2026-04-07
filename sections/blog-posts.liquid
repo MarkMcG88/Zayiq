@@ -1,15 +1,19 @@
 <section class="blog-posts section-padding">
   <div class="page-width">
-    <div class="blog-posts__header">
-      <h2>{{ section.settings.title | default: 'Artist' }} <span style="color: var(--color-primary);">{{ section.settings.title_highlight | default: 'Stories' }}</span></h2>
+    <div class="blog-posts__header reveal">
+      <div>
+        <p class="section-label" style="color: var(--color-primary);">{{ section.settings.label | default: 'From the Studio' }}</p>
+        <h2>{{ section.settings.title | default: 'Artist' }} <span style="color: var(--color-primary);">{{ section.settings.title_highlight | default: 'Stories' }}</span></h2>
+      </div>
       {% if section.settings.link_text != blank %}
-        <a href="{{ blogs[section.settings.blog].url | default: '/blogs/artists' }}" class="btn btn--outline">
+        <a href="{{ blogs[section.settings.blog].url | default: '/blogs/artists' }}" class="btn btn--outline btn--arrow">
           {{ section.settings.link_text }}
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       {% endif %}
     </div>
 
-    <div class="grid grid--3">
+    <div class="grid grid--3 reveal-stagger">
       {% if section.settings.blog != blank and blogs[section.settings.blog].articles.size > 0 %}
         {% for article in blogs[section.settings.blog].articles limit: section.settings.posts_to_show %}
           <a href="{{ article.url }}" class="blog-card">
@@ -20,7 +24,7 @@
                   alt="{{ article.image.alt | default: article.title }}"
                   loading="lazy"
                   width="800"
-                  height="500"
+                  height="600"
                 >
               </div>
             {% endif %}
@@ -55,6 +59,12 @@
 {
   "name": "Blog posts",
   "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section label",
+      "default": "From the Studio"
+    },
     {
       "type": "text",
       "id": "title",
