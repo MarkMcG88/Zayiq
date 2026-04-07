@@ -1,6 +1,15 @@
 <section class="hero">
   <div class="hero__gradient-bg"></div>
 
+  {% if section.settings.video_url != blank %}
+    <div class="hero__video">
+      <video autoplay muted loop playsinline>
+        <source src="{{ section.settings.video_url }}" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero__overlay" style="background: linear-gradient(160deg, rgba(26,26,26,0.7) 0%, rgba(26,26,26,0.4) 50%, rgba(91,46,255,0.2) 100%);"></div>
+  {% endif %}
+
   <div class="hero__split">
     <div class="hero__text">
       {% if section.settings.subtitle != blank %}
@@ -104,6 +113,12 @@
       "id": "show_scroll_hint",
       "label": "Show scroll indicator",
       "default": true
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "Video URL (mp4)",
+      "info": "Upload video via Settings > Files, then paste the URL here. When set, the collage images are hidden."
     }
   ],
   "blocks": [

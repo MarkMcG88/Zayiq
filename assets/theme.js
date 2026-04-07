@@ -532,4 +532,82 @@
     track.innerHTML = clone + clone;
   });
 
+  /* =========================================
+     Countdown Timer
+     ========================================= */
+  document.querySelectorAll('[data-countdown]').forEach(function(timer) {
+    var target = new Date(timer.dataset.countdown).getTime();
+    var daysEl = timer.querySelector('[data-days]');
+    var hoursEl = timer.querySelector('[data-hours]');
+    var minutesEl = timer.querySelector('[data-minutes]');
+    var secondsEl = timer.querySelector('[data-seconds]');
+
+    if (!daysEl || !target) return;
+
+    function update() {
+      var now = Date.now();
+      var diff = Math.max(0, target - now);
+
+      var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      daysEl.textContent = String(days).padStart(2, '0');
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minutesEl.textContent = String(minutes).padStart(2, '0');
+      secondsEl.textContent = String(seconds).padStart(2, '0');
+    }
+
+    update();
+    setInterval(update, 1000);
+  });
+
+  /* =========================================
+     Shop the Look Hotspots
+     ========================================= */
+  document.querySelectorAll('[data-hotspot]').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var id = this.dataset.hotspot;
+      var card = document.querySelector('[data-hotspot-card="' + id + '"]');
+
+      // Close all other cards
+      document.querySelectorAll('.shop-look__hotspot-card').forEach(function(c) {
+        if (c !== card) c.classList.remove('is-active');
+      });
+
+      if (card) {
+        card.classList.toggle('is-active');
+        // Position card near the hotspot
+        card.style.left = this.style.left;
+        card.style.top = this.style.top;
+      }
+    });
+  });
+
+  // Close hotspot cards when clicking elsewhere
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.shop-look__hotspot-card').forEach(function(c) {
+      c.classList.remove('is-active');
+    });
+  });
+
+  /* =========================================
+     Parallax Effect (lightweight)
+     ========================================= */
+  var parallaxElements = document.querySelectorAll('[data-parallax]');
+
+  if (parallaxElements.length > 0) {
+    window.addEventListener('scroll', function() {
+      var scrollY = window.scrollY;
+      parallaxElements.forEach(function(el) {
+        var speed = parseFloat(el.dataset.parallax) || 0.3;
+        var rect = el.getBoundingClientRect();
+        var offset = (rect.top + scrollY - window.innerHeight / 2) * speed;
+        el.style.transform = 'translateY(' + (-offset * 0.15) + 'px)';
+      });
+    }, { passive: true });
+  }
+
 })();

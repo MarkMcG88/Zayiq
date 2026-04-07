@@ -1,0 +1,61 @@
+<section class="statement section-padding" style="background: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }};">
+  <div class="page-width">
+    <div class="statement__inner reveal">
+      {% if section.settings.label != blank %}
+        <p class="section-label" style="color: {{ section.settings.accent_color }}; justify-content: center;">{{ section.settings.label }}</p>
+      {% endif %}
+      <h2 class="statement__text">{{ section.settings.text | default: 'We believe clothing should be a canvas — not a commodity.' }}</h2>
+      {% if section.settings.author != blank %}
+        <p class="statement__author">— {{ section.settings.author }}</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Statement text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Our Philosophy"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Statement text",
+      "default": "We believe clothing should be a canvas — not a commodity."
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Author / attribution"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#FF3C00"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Statement text"
+    }
+  ]
+}
+{% endschema %}
