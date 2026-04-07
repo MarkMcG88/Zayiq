@@ -1,0 +1,108 @@
+<section class="hero">
+  {% if section.settings.image != blank %}
+    <div class="hero__media">
+      <img
+        src="{{ section.settings.image | image_url: width: 2000 }}"
+        alt="{{ section.settings.image.alt | default: section.settings.heading }}"
+        loading="eager"
+        width="2000"
+        height="1200"
+      >
+    </div>
+  {% endif %}
+
+  <div class="hero__overlay" style="background: linear-gradient(135deg, rgba(26,26,26,{{ section.settings.overlay_opacity | divided_by: 100.0 }}) 0%, rgba(91,46,255,{{ section.settings.overlay_opacity | divided_by: 200.0 }}) 100%);"></div>
+
+  <div class="hero__content">
+    {% if section.settings.subtitle != blank %}
+      <p class="hero__subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+
+    <h1 class="hero__title">{{ section.settings.heading }}</h1>
+
+    {% if section.settings.description != blank %}
+      <p class="hero__description">{{ section.settings.description }}</p>
+    {% endif %}
+
+    <div class="hero__actions">
+      {% if section.settings.button_text != blank %}
+        <a href="{{ section.settings.button_link }}" class="btn btn--primary btn--large">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+      {% if section.settings.button_text_2 != blank %}
+        <a href="{{ section.settings.button_link_2 }}" class="btn btn--outline btn--large" style="color: var(--color-text-light); border-color: var(--color-text-light);">
+          {{ section.settings.button_text_2 }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 60,
+      "unit": "%"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Artist Series 001"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Wear the <em>Art</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Limited collections designed by independent artists. Bold apparel that tells a story."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop the Drop"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "button_text_2",
+      "label": "Second button text",
+      "default": "Meet the Artist"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Second button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero banner"
+    }
+  ]
+}
+{% endschema %}

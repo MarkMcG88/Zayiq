@@ -1,0 +1,115 @@
+<section class="product-page section-padding">
+  <div class="page-width">
+    <div class="product-page__inner">
+      <div class="product-page__gallery">
+        <div class="product-page__main-image">
+          {% if product.featured_image %}
+            <img
+              src="{{ product.featured_image | image_url: width: 1200 }}"
+              alt="{{ product.featured_image.alt | default: product.title | escape }}"
+              loading="eager"
+              width="900"
+              height="1200"
+            >
+          {% else %}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </div>
+
+        {% if product.images.size > 1 %}
+          <div class="product-page__thumbs">
+            {% for image in product.images %}
+              <div
+                class="product-page__thumb {% if forloop.first %}is-active{% endif %}"
+                data-src="{{ image | image_url: width: 1200 }}"
+                data-srcset="{{ image | image_url: width: 600 }} 600w, {{ image | image_url: width: 1200 }} 1200w"
+              >
+                <img
+                  src="{{ image | image_url: width: 200 }}"
+                  alt="{{ image.alt | default: product.title | escape }}"
+                  loading="lazy"
+                  width="200"
+                  height="200"
+                >
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="product-page__details">
+        {% if product.vendor != blank %}
+          <p class="product-page__vendor">{{ product.vendor }}</p>
+        {% endif %}
+
+        <h1 class="product-page__title">{{ product.title }}</h1>
+
+        <div class="product-page__price">
+          {% if product.compare_at_price > product.price %}
+            <span style="text-decoration: line-through; opacity: 0.5;">{{ product.compare_at_price | money }}</span>
+            <span style="color: var(--color-primary);">{{ product.price | money }}</span>
+          {% else %}
+            <span>{{ product.price | money }}</span>
+          {% endif %}
+        </div>
+
+        {% if product.description != blank %}
+          <div class="product-page__description">
+            {{ product.description }}
+          </div>
+        {% endif %}
+
+        {% form 'product', product %}
+          {% if product.variants.size > 1 %}
+            {% for option in product.options_with_values %}
+              <div class="product-page__variants">
+                <p class="product-page__variant-label">{{ option.name }}</p>
+                <div class="product-page__variant-options">
+                  {% for value in option.values %}
+                    <button
+                      type="button"
+                      class="product-page__variant-option {% if forloop.first %}is-active{% endif %}"
+                      data-value="{{ value }}"
+                    >
+                      {{ value }}
+                    </button>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+
+            <select name="id" style="display: none;">
+              {% for variant in product.variants %}
+                <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>
+                  {{ variant.title }} - {{ variant.price | money }}
+                </option>
+              {% endfor %}
+            </select>
+          {% else %}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          {% endif %}
+
+          <button
+            type="submit"
+            name="add"
+            class="btn btn--primary btn--large product-page__add-to-cart"
+            {% unless product.available %}disabled{% endunless %}
+          >
+            {% if product.available %}
+              Add to Cart
+            {% else %}
+              Sold Out
+            {% endif %}
+          </button>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product page",
+  "settings": []
+}
+{% endschema %}

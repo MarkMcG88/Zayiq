@@ -1,0 +1,106 @@
+<section class="artist-feature" style="background: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }};">
+  <div class="artist-feature__inner">
+    <div class="artist-feature__media">
+      {% if section.settings.image != blank %}
+        <img
+          src="{{ section.settings.image | image_url: width: 1200 }}"
+          alt="{{ section.settings.artist_name | escape }}"
+          loading="lazy"
+          width="1200"
+          height="800"
+        >
+      {% else %}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+
+    <div class="artist-feature__content">
+      <p class="artist-feature__label">{{ section.settings.label | default: 'Featured Artist' }}</p>
+      <h2 class="artist-feature__name">{{ section.settings.artist_name | default: 'Artist Name' }}</h2>
+      <p class="artist-feature__bio">{{ section.settings.bio | default: 'A brief introduction to the artist behind this collection. Their story, their vision, their art — now wearable.' }}</p>
+
+      <div class="artist-feature__actions">
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link }}" class="btn btn--primary">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+        {% if section.settings.button_text_2 != blank %}
+          <a href="{{ section.settings.button_link_2 }}" class="btn btn--outline" style="color: {{ section.settings.text_color }}; border-color: {{ section.settings.text_color }};">
+            {{ section.settings.button_text_2 }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Artist feature",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Featured Artist"
+    },
+    {
+      "type": "text",
+      "id": "artist_name",
+      "label": "Artist name",
+      "default": "Artist Name"
+    },
+    {
+      "type": "textarea",
+      "id": "bio",
+      "label": "Bio text",
+      "default": "A brief introduction to the artist behind this collection. Their story, their vision, their art — now wearable."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Artist image"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop Collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "button_text_2",
+      "label": "Second button text",
+      "default": "Read Interview"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Second button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Artist feature"
+    }
+  ]
+}
+{% endschema %}

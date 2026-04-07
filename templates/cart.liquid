@@ -1,0 +1,77 @@
+<section class="section-padding">
+  <div class="page-width">
+    {% if cart.item_count == 0 %}
+      <div class="cart-page__empty">
+        <h2>Your Cart is Empty</h2>
+        <p>Looks like you haven't added anything yet.</p>
+        <a href="/collections/all" class="btn btn--primary btn--large">Start Shopping</a>
+      </div>
+    {% else %}
+      <h1 style="margin-bottom: 40px;">Your Cart</h1>
+
+      <form action="/cart" method="post">
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in cart.items %}
+              <tr>
+                <td>
+                  <div class="cart-item__info">
+                    <div class="cart-item__image">
+                      {% if item.image %}
+                        <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" loading="lazy">
+                      {% endif %}
+                    </div>
+                    <div>
+                      <p class="cart-item__title">
+                        <a href="{{ item.url }}">{{ item.product.title }}</a>
+                      </p>
+                      {% if item.variant.title != 'Default Title' %}
+                        <p class="cart-item__variant">{{ item.variant.title }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </td>
+                <td>{{ item.price | money }}</td>
+                <td>
+                  <div class="cart-item__quantity">
+                    <button type="button" data-action="decrease" aria-label="Decrease quantity">−</button>
+                    <input
+                      type="number"
+                      name="updates[]"
+                      value="{{ item.quantity }}"
+                      min="0"
+                      aria-label="Quantity"
+                    >
+                    <button type="button" data-action="increase" aria-label="Increase quantity">+</button>
+                  </div>
+                </td>
+                <td>{{ item.line_price | money }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <div class="cart-footer">
+          <div class="cart-footer__summary">
+            <div class="cart-footer__total">
+              <span>Total</span>
+              <span>{{ cart.total_price | money }}</span>
+            </div>
+            <p class="cart-footer__note">Shipping & taxes calculated at checkout</p>
+            <button type="submit" name="checkout" class="btn btn--primary btn--large cart-footer__checkout">
+              Checkout
+            </button>
+          </div>
+        </div>
+      </form>
+    {% endif %}
+  </div>
+</section>

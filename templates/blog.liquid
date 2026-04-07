@@ -1,0 +1,43 @@
+<section class="collection-banner section-padding">
+  <div class="page-width">
+    <h1 class="collection-banner__title">{{ blog.title }}</h1>
+  </div>
+</section>
+
+<section class="blog-posts section-padding" style="padding-top: 0;">
+  <div class="page-width">
+    {% paginate blog.articles by 9 %}
+      <div class="grid grid--3">
+        {% for article in blog.articles %}
+          <a href="{{ article.url }}" class="blog-card">
+            {% if article.image %}
+              <div class="blog-card__media">
+                <img
+                  src="{{ article.image | image_url: width: 800 }}"
+                  alt="{{ article.image.alt | default: article.title }}"
+                  loading="lazy"
+                  width="800"
+                  height="500"
+                >
+              </div>
+            {% endif %}
+
+            {% if article.tags.size > 0 %}
+              <span class="blog-card__tag">{{ article.tags.first }}</span>
+            {% endif %}
+
+            <h2 class="blog-card__title">{{ article.title }}</h2>
+            <p class="blog-card__excerpt">{{ article.excerpt_or_content | strip_html | truncatewords: 25 }}</p>
+            <p class="blog-card__meta">{{ article.published_at | date: '%B %d, %Y' }} &middot; {{ article.author }}</p>
+          </a>
+        {% endfor %}
+      </div>
+
+      {% if paginate.pages > 1 %}
+        <div style="text-align: center; margin-top: 48px;">
+          {{ paginate | default_pagination }}
+        </div>
+      {% endif %}
+    {% endpaginate %}
+  </div>
+</section>

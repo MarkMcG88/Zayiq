@@ -1,0 +1,91 @@
+<section class="featured-collection section-padding">
+  <div class="page-width">
+    <div class="featured-collection__header">
+      <h2 class="featured-collection__title">
+        {{ section.settings.title | default: 'Featured' }} <span>{{ section.settings.title_highlight | default: 'Collection' }}</span>
+      </h2>
+      {% if section.settings.link_text != blank %}
+        <a href="{{ section.settings.collection.url | default: '/collections/all' }}" class="btn btn--outline">
+          {{ section.settings.link_text }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="grid grid--{{ section.settings.columns }}">
+      {% if section.settings.collection != blank %}
+        {% for product in collections[section.settings.collection].products limit: section.settings.products_to_show %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      {% else %}
+        {% for i in (1..section.settings.products_to_show) %}
+          <div class="product-card">
+            <div class="product-card__media">
+              {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+            <div class="product-card__info">
+              <p class="product-card__vendor">Artist Name</p>
+              <h3 class="product-card__title">Product Title</h3>
+              <div class="product-card__price">$49.00</div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Latest"
+    },
+    {
+      "type": "text",
+      "id": "title_highlight",
+      "label": "Title highlight word",
+      "default": "Drop"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text",
+      "default": "View All"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured collection"
+    }
+  ]
+}
+{% endschema %}

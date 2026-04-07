@@ -1,0 +1,31 @@
+<section class="collection-banner section-padding">
+  <div class="page-width">
+    <h1 class="collection-banner__title">Collections</h1>
+  </div>
+</section>
+
+<section class="section-padding" style="padding-top: 0;">
+  <div class="page-width">
+    <div class="grid grid--3">
+      {% for collection in collections %}
+        <a href="{{ collection.url }}" class="blog-card">
+          <div class="blog-card__media">
+            {% if collection.image %}
+              <img
+                src="{{ collection.image | image_url: width: 800 }}"
+                alt="{{ collection.title | escape }}"
+                loading="lazy"
+                width="800"
+                height="500"
+              >
+            {% else %}
+              {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          <h2 class="blog-card__title">{{ collection.title }}</h2>
+          <p class="blog-card__excerpt">{{ collection.products_count }} products</p>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

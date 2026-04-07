@@ -1,0 +1,42 @@
+<a href="{{ product.url }}" class="product-card">
+  <div class="product-card__media">
+    {% if product.featured_image %}
+      <img
+        src="{{ product.featured_image | image_url: width: 800 }}"
+        alt="{{ product.featured_image.alt | default: product.title | escape }}"
+        loading="lazy"
+        width="600"
+        height="800"
+      >
+    {% else %}
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+
+    {% if product.compare_at_price > product.price %}
+      <span class="product-card__badge">Sale</span>
+    {% elsif product.available == false %}
+      <span class="product-card__badge" style="background: var(--color-text);">Sold Out</span>
+    {% endif %}
+
+    {% if product.available %}
+      <div class="product-card__quick-add">
+        <span class="btn btn--primary">Quick View</span>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="product-card__info">
+    {% if product.vendor != blank %}
+      <p class="product-card__vendor">{{ product.vendor }}</p>
+    {% endif %}
+    <h3 class="product-card__title">{{ product.title }}</h3>
+    <div class="product-card__price">
+      {% if product.compare_at_price > product.price %}
+        <span class="product-card__price--compare">{{ product.compare_at_price | money }}</span>
+        <span class="product-card__price--sale">{{ product.price | money }}</span>
+      {% else %}
+        <span>{{ product.price | money }}</span>
+      {% endif %}
+    </div>
+  </div>
+</a>
