@@ -1,44 +1,148 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero",
+      "blocks": {
+        "image_YWyGjq": {
+          "type": "image",
+          "settings": {
+            "alt": ""
+          }
+        },
+        "image_jqGhWM": {
+          "type": "image",
+          "settings": {
+            "alt": ""
+          }
+        },
+        "image_VBPny8": {
+          "type": "image",
+          "settings": {
+            "alt": ""
+          }
+        },
+        "image_rTb3df": {
+          "type": "image",
+          "settings": {
+            "alt": ""
+          }
+        },
+        "image_TDnPVQ": {
+          "type": "image",
+          "settings": {
+            "alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_YWyGjq",
+        "image_jqGhWM",
+        "image_VBPny8",
+        "image_rTb3df",
+        "image_TDnPVQ"
+      ],
       "settings": {
         "subtitle": "Artist Series 001",
-        "heading": "Wear the <em>Art</em>",
+        "heading": "Wear the Art",
         "description": "Limited collections designed by independent artists. Bold apparel that tells a story.",
         "button_text": "Shop the Drop",
+        "button_link": "",
         "button_text_2": "Meet the Artist",
+        "button_link_2": "",
         "show_scroll_hint": true
-      },
-      "blocks": {
-        "h1": { "type": "image" },
-        "h2": { "type": "image" },
-        "h3": { "type": "image" },
-        "h4": { "type": "image" },
-        "h5": { "type": "image" }
-      },
-      "block_order": ["h1", "h2", "h3", "h4", "h5"]
+      }
     },
     "brand-ticker": {
       "type": "brand-ticker",
       "blocks": {
-        "t1": { "type": "text", "settings": { "text": "Artist-Designed" } },
-        "t2": { "type": "text", "settings": { "text": "Limited Edition" } },
-        "t3": { "type": "text", "settings": { "text": "Independent Creators" } },
-        "t4": { "type": "text", "settings": { "text": "Bold Apparel" } },
-        "t5": { "type": "text", "settings": { "text": "Wear the Art" } }
+        "t1": {
+          "type": "text",
+          "settings": {
+            "text": "Artist-Designed"
+          }
+        },
+        "t2": {
+          "type": "text",
+          "settings": {
+            "text": "Limited Edition"
+          }
+        },
+        "t3": {
+          "type": "text",
+          "settings": {
+            "text": "Independent Creators"
+          }
+        },
+        "t4": {
+          "type": "text",
+          "settings": {
+            "text": "Bold Apparel"
+          }
+        },
+        "t5": {
+          "type": "text",
+          "settings": {
+            "text": "Wear the Art"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3", "t4", "t5"]
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5"
+      ],
+      "settings": {}
     },
     "values-bar": {
       "type": "values-bar",
       "blocks": {
-        "v1": { "type": "value", "settings": { "icon": "shipping", "text": "Free Shipping Over $100" } },
-        "v2": { "type": "value", "settings": { "icon": "quality", "text": "Premium Quality Materials" } },
-        "v3": { "type": "value", "settings": { "icon": "limited", "text": "Limited Edition Drops" } },
-        "v4": { "type": "value", "settings": { "icon": "sustainable", "text": "Ethically Made" } }
+        "v1": {
+          "type": "value",
+          "settings": {
+            "icon": "shipping",
+            "text": "Free Shipping Over $100"
+          }
+        },
+        "v2": {
+          "type": "value",
+          "settings": {
+            "icon": "quality",
+            "text": "Premium Quality Materials"
+          }
+        },
+        "v3": {
+          "type": "value",
+          "settings": {
+            "icon": "limited",
+            "text": "Limited Edition Drops"
+          }
+        },
+        "v4": {
+          "type": "value",
+          "settings": {
+            "icon": "sustainable",
+            "text": "Ethically Made"
+          }
+        }
       },
-      "block_order": ["v1", "v2", "v3", "v4"]
+      "block_order": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "settings": {}
     },
     "featured-collection": {
       "type": "featured-collection",
@@ -46,6 +150,7 @@
         "label": "Curated Selection",
         "title": "Latest",
         "title_highlight": "Drop",
+        "collection": "",
         "products_to_show": 4,
         "columns": "4",
         "link_text": "View All"
@@ -54,11 +159,34 @@
     "lookbook": {
       "type": "lookbook",
       "blocks": {
-        "l1": { "type": "image", "settings": { "label": "New Arrivals" } },
-        "l2": { "type": "image", "settings": { "label": "Artist Series" } },
-        "l3": { "type": "image", "settings": { "label": "Essentials" } }
+        "l1": {
+          "type": "image",
+          "settings": {
+            "label": "New Arrivals",
+            "link": ""
+          }
+        },
+        "l2": {
+          "type": "image",
+          "settings": {
+            "label": "Artist Series",
+            "link": ""
+          }
+        },
+        "l3": {
+          "type": "image",
+          "settings": {
+            "label": "Essentials",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["l1", "l2", "l3"]
+      "block_order": [
+        "l1",
+        "l2",
+        "l3"
+      ],
+      "settings": {}
     },
     "artist-feature": {
       "type": "artist-feature",
@@ -66,10 +194,12 @@
         "label": "Featured Artist",
         "artist_name": "Artist Name",
         "bio": "A brief introduction to the artist behind this collection. Their story, their vision, their art — now wearable.",
-        "bg_color": "#1A1A1A",
-        "text_color": "#FFFFFF",
+        "bg_color": "#1a1a1a",
+        "text_color": "#ffffff",
         "button_text": "Shop Collection",
-        "button_text_2": "Read Interview"
+        "button_link": "",
+        "button_text_2": "Read Interview",
+        "button_link_2": ""
       }
     },
     "testimonial": {
@@ -86,6 +216,7 @@
         "label": "From the Studio",
         "title": "Artist",
         "title_highlight": "Stories",
+        "blog": "",
         "posts_to_show": 3,
         "link_text": "All Stories"
       }
@@ -95,6 +226,7 @@
       "settings": {
         "heading": "Join the Collective",
         "text": "Be first to know about new artist drops, exclusive pieces, and behind-the-scenes stories.",
+        "placeholder": "Your email address",
         "button_text": "Subscribe"
       }
     }
