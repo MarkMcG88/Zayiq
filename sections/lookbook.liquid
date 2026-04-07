@@ -1,6 +1,5 @@
-<section class="lookbook section-padding--tight reveal">
-  <div class="page-width">
-    <div class="lookbook__grid">
+<section class="lookbook reveal" style="margin-bottom: 0;">
+  <div class="lookbook__grid">
       {% for block in section.blocks %}
         <a href="{{ block.settings.link | default: '#' }}" class="lookbook__item" {{ block.shopify_attributes }}>
           {% if block.settings.image != blank %}
@@ -21,7 +20,6 @@
           </div>
         </a>
       {% endfor %}
-    </div>
   </div>
 </section>
 

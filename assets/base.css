@@ -978,12 +978,13 @@ p {
 .lookbook {
   background: var(--color-bg);
   overflow: hidden;
+  padding: 0;
 }
 
 .lookbook__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  gap: 0;
 }
 
 .lookbook__item {
@@ -992,7 +993,7 @@ p {
 }
 
 .lookbook__item {
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 2 / 1;
 }
 
 .lookbook__item img {
@@ -1038,10 +1039,7 @@ p {
   .lookbook__grid {
     grid-template-columns: 1fr;
   }
-  .lookbook__item:nth-child(1),
-  .lookbook__item:nth-child(2),
-  .lookbook__item:nth-child(3) {
-    grid-column: 1;
+  .lookbook__item {
     aspect-ratio: 16/9;
   }
 }
