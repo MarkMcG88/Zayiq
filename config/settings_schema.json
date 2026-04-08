@@ -3,9 +3,7 @@
     "name": "theme_info",
     "theme_name": "Zayiq",
     "theme_version": "1.0.0",
-    "theme_author": "Zayiq",
-    "theme_documentation_url": "",
-    "theme_support_url": ""
+    "theme_author": "Zayiq"
   },
   {
     "name": "Colors",
@@ -122,8 +120,8 @@
         "type": "font_picker",
         "id": "type_header_font",
         "label": "Heading font",
-        "default": "work_sans_n6",
-        "info": "Used for all headings, titles, and labels. Select any font — Space Grotesk is loaded via Google Fonts by default."
+        "default": "helvetica_n7",
+        "info": "Used for all headings, titles, and labels"
       },
       {
         "type": "select",
@@ -157,8 +155,8 @@
         "type": "font_picker",
         "id": "type_body_font",
         "label": "Body font",
-        "default": "assistant_n4",
-        "info": "Used for paragraphs, descriptions, and UI text. Select any font — Inter is loaded via Google Fonts by default."
+        "default": "helvetica_n4",
+        "info": "Used for paragraphs, descriptions, and UI text"
       },
       {
         "type": "range",

@@ -10,8 +10,44 @@
   padding: 0;
 }
 
+{% comment %} Pre-compute all theme settings into Liquid variables {% endcomment %}
+
+{%- if settings.type_header_font.family -%}
+  {%- assign heading_font_stack = settings.type_header_font.family | append: ', ' | append: settings.type_header_font.fallback_families -%}
+{%- else -%}
+  {%- assign heading_font_stack = "'Space Grotesk', sans-serif" -%}
+{%- endif -%}
+
+{%- if settings.type_body_font.family -%}
+  {%- assign body_font_stack = settings.type_body_font.family | append: ', ' | append: settings.type_body_font.fallback_families -%}
+{%- else -%}
+  {%- assign body_font_stack = "'Inter', sans-serif" -%}
+{%- endif -%}
+
+{%- case settings.button_style -%}
+  {%- when 'rounded' -%}{%- assign btn_radius = '6px' -%}
+  {%- when 'pill' -%}{%- assign btn_radius = '999px' -%}
+  {%- else -%}{%- assign btn_radius = '0' -%}
+{%- endcase -%}
+
+{%- case settings.card_border_radius -%}
+  {%- when 'none' -%}{%- assign card_r = '0' -%}{%- assign card_r_lg = '0' -%}
+  {%- when 'medium' -%}{%- assign card_r = '8px' -%}{%- assign card_r_lg = '12px' -%}
+  {%- when 'large' -%}{%- assign card_r = '12px' -%}{%- assign card_r_lg = '20px' -%}
+  {%- else -%}{%- assign card_r = '4px' -%}{%- assign card_r_lg = '8px' -%}
+{%- endcase -%}
+
+{%- if settings.enable_animations == false -%}
+  {%- assign tr = '0s' -%}{%- assign tr_slow = '0s' -%}
+{%- else -%}
+  {%- case settings.animation_speed -%}
+    {%- when 'fast' -%}{%- assign tr = '0.15s cubic-bezier(0.4, 0, 0.2, 1)' -%}{%- assign tr_slow = '0.3s cubic-bezier(0.4, 0, 0.2, 1)' -%}
+    {%- when 'slow' -%}{%- assign tr = '0.5s cubic-bezier(0.4, 0, 0.2, 1)' -%}{%- assign tr_slow = '0.9s cubic-bezier(0.4, 0, 0.2, 1)' -%}
+    {%- else -%}{%- assign tr = '0.3s cubic-bezier(0.4, 0, 0.2, 1)' -%}{%- assign tr_slow = '0.6s cubic-bezier(0.4, 0, 0.2, 1)' -%}
+  {%- endcase -%}
+{%- endif -%}
+
 :root {
-  /* Colors */
   --color-primary: {{ settings.color_primary | default: '#FF3C00' }};
   --color-secondary: {{ settings.color_secondary | default: '#5B2EFF' }};
   --color-accent: {{ settings.color_accent | default: '#00E5A0' }};
@@ -24,53 +60,22 @@
   --color-secondary-hover: {{ settings.color_secondary_hover | default: '#4A1FE0' }};
   --color-success: {{ settings.color_success | default: '#00A870' }};
   --color-error: {{ settings.color_error | default: '#e53e3e' }};
-
-  /* Typography */
-  {% if settings.type_header_font.family %}
-    --font-heading: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
-  {% else %}
-    --font-heading: 'Space Grotesk', sans-serif;
-  {% endif %}
-  {% if settings.type_body_font.family %}
-    --font-body: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
-  {% else %}
-    --font-body: 'Inter', sans-serif;
-  {% endif %}
+  --font-heading: {{ heading_font_stack }};
+  --font-body: {{ body_font_stack }};
   --font-heading-weight: {{ settings.heading_weight | default: '700' }};
   --heading-transform: {{ settings.heading_transform | default: 'uppercase' }};
   --body-font-size: {{ settings.body_font_size | default: 16 }}px;
   --body-line-height: {{ settings.body_line_height | default: '1.6' }};
-
-  /* Layout */
   --max-width: {{ settings.max_page_width | default: 1440 }}px;
   --gutter: clamp(16px, 3vw, 40px);
   --section-spacing: {{ settings.section_vertical_spacing | default: 60 }}px;
   --grid-gap: {{ settings.grid_gap | default: 20 }}px;
-
-  /* Buttons & Cards */
-  {% case settings.button_style %}
-    {% when 'rounded' %}--btn-radius: 6px;
-    {% when 'pill' %}--btn-radius: 999px;
-    {% else %}--btn-radius: 0;
-  {% endcase %}
+  --btn-radius: {{ btn_radius }};
   --btn-transform: {{ settings.button_transform | default: 'uppercase' }};
-  {% case settings.card_border_radius %}
-    {% when 'none' %}--radius: 0; --radius-lg: 0;
-    {% when 'medium' %}--radius: 8px; --radius-lg: 12px;
-    {% when 'large' %}--radius: 12px; --radius-lg: 20px;
-    {% else %}--radius: 4px; --radius-lg: 8px;
-  {% endcase %}
-
-  /* Animations */
-  {% if settings.enable_animations == false %}
-    --transition: 0s; --transition-slow: 0s;
-  {% else %}
-    {% case settings.animation_speed %}
-      {% when 'fast' %}--transition: 0.15s cubic-bezier(0.4, 0, 0.2, 1); --transition-slow: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      {% when 'slow' %}--transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); --transition-slow: 0.9s cubic-bezier(0.4, 0, 0.2, 1);
-      {% else %}--transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    {% endcase %}
-  {% endif %}
+  --radius: {{ card_r }};
+  --radius-lg: {{ card_r_lg }};
+  --transition: {{ tr }};
+  --transition-slow: {{ tr_slow }};
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
