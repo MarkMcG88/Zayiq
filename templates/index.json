@@ -12,6 +12,12 @@
     "hero": {
       "type": "hero",
       "blocks": {
+        "image_nTmTLG": {
+          "type": "image",
+          "settings": {
+            "alt": ""
+          }
+        },
         "image_YWyGjq": {
           "type": "image",
           "settings": {
@@ -44,6 +50,7 @@
         }
       },
       "block_order": [
+        "image_nTmTLG",
         "image_YWyGjq",
         "image_jqGhWM",
         "image_VBPny8",
@@ -58,7 +65,8 @@
         "button_link": "",
         "button_text_2": "Meet the Artist",
         "button_link_2": "",
-        "show_scroll_hint": true
+        "show_scroll_hint": true,
+        "video_url": ""
       }
     },
     "brand-ticker": {
