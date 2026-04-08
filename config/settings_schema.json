@@ -11,10 +11,425 @@
     "name": "Colors",
     "settings": [
       {
+        "type": "header",
+        "content": "Brand colors"
+      },
+      {
         "type": "color",
         "id": "color_primary",
-        "label": "Primary color",
-        "default": "#FF3C00"
+        "label": "Primary",
+        "default": "#FF3C00",
+        "info": "Main brand color - buttons, links, accents"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary",
+        "default": "#5B2EFF",
+        "info": "Secondary brand color - tags, badges, alt buttons"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent",
+        "default": "#00E5A0",
+        "info": "Accent color - highlights, success states"
+      },
+      {
+        "type": "header",
+        "content": "Base colors"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Surface",
+        "default": "#F5F5F3",
+        "info": "Cards, panels, and elevated surfaces"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Border",
+        "default": "#E2E2E0",
+        "info": "Borders, dividers, and separators"
+      },
+      {
+        "type": "header",
+        "content": "Text colors"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#1A1A1A",
+        "info": "Primary text color on light backgrounds"
+      },
+      {
+        "type": "color",
+        "id": "color_text_light",
+        "label": "Text (on dark)",
+        "default": "#FFFFFF",
+        "info": "Text color on dark or primary-colored backgrounds"
+      },
+      {
+        "type": "header",
+        "content": "Interactive states"
+      },
+      {
+        "type": "color",
+        "id": "color_primary_hover",
+        "label": "Primary hover",
+        "default": "#E03500",
+        "info": "Hover state for primary buttons and links"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary_hover",
+        "label": "Secondary hover",
+        "default": "#4A1FE0",
+        "info": "Hover state for secondary buttons and links"
+      },
+      {
+        "type": "color",
+        "id": "color_success",
+        "label": "Success",
+        "default": "#00A870",
+        "info": "Success messages, free shipping bar"
+      },
+      {
+        "type": "color",
+        "id": "color_error",
+        "label": "Error",
+        "default": "#e53e3e",
+        "info": "Error messages and validation"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Headings"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "label": "Heading font",
+        "default": "assistant_n4",
+        "info": "Used for all headings, titles, and labels"
+      },
+      {
+        "type": "select",
+        "id": "heading_weight",
+        "label": "Heading weight",
+        "default": "700",
+        "options": [
+          { "value": "400", "label": "Regular" },
+          { "value": "500", "label": "Medium" },
+          { "value": "600", "label": "Semi-bold" },
+          { "value": "700", "label": "Bold" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "heading_transform",
+        "label": "Heading letter case",
+        "default": "uppercase",
+        "options": [
+          { "value": "none", "label": "Normal" },
+          { "value": "uppercase", "label": "UPPERCASE" },
+          { "value": "lowercase", "label": "lowercase" },
+          { "value": "capitalize", "label": "Capitalize" }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Body text"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Body font",
+        "default": "assistant_n4",
+        "info": "Used for paragraphs, descriptions, and UI text"
+      },
+      {
+        "type": "range",
+        "id": "body_font_size",
+        "label": "Base font size",
+        "min": 14,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      },
+      {
+        "type": "select",
+        "id": "body_line_height",
+        "label": "Body line height",
+        "default": "1.6",
+        "options": [
+          { "value": "1.2", "label": "Tight (1.2)" },
+          { "value": "1.4", "label": "Compact (1.4)" },
+          { "value": "1.6", "label": "Normal (1.6)" },
+          { "value": "1.8", "label": "Relaxed (1.8)" },
+          { "value": "2.0", "label": "Spacious (2.0)" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Page width"
+      },
+      {
+        "type": "range",
+        "id": "max_page_width",
+        "label": "Maximum page width",
+        "min": 1000,
+        "max": 1600,
+        "step": 20,
+        "unit": "px",
+        "default": 1440
+      },
+      {
+        "type": "header",
+        "content": "Spacing"
+      },
+      {
+        "type": "range",
+        "id": "section_vertical_spacing",
+        "label": "Vertical space between sections",
+        "min": 20,
+        "max": 120,
+        "step": 4,
+        "unit": "px",
+        "default": 60,
+        "info": "Top and bottom padding for each section"
+      },
+      {
+        "type": "range",
+        "id": "grid_gap",
+        "label": "Grid gap",
+        "min": 8,
+        "max": 40,
+        "step": 4,
+        "unit": "px",
+        "default": 20,
+        "info": "Space between product cards, collection items, etc."
+      }
+    ]
+  },
+  {
+    "name": "Buttons and styles",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Buttons"
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "label": "Button style",
+        "default": "square",
+        "options": [
+          { "value": "square", "label": "Square corners" },
+          { "value": "rounded", "label": "Slightly rounded" },
+          { "value": "pill", "label": "Pill shape" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "button_transform",
+        "label": "Button letter case",
+        "default": "uppercase",
+        "options": [
+          { "value": "none", "label": "Normal" },
+          { "value": "uppercase", "label": "UPPERCASE" },
+          { "value": "capitalize", "label": "Capitalize" }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Cards and surfaces"
+      },
+      {
+        "type": "select",
+        "id": "card_border_radius",
+        "label": "Card corner radius",
+        "default": "small",
+        "options": [
+          { "value": "none", "label": "Square (0px)" },
+          { "value": "small", "label": "Small (4px)" },
+          { "value": "medium", "label": "Medium (8px)" },
+          { "value": "large", "label": "Large (12px)" }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "card_shadow",
+        "label": "Show shadow on cards",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Animations"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_animations",
+        "label": "Enable animations",
+        "default": true,
+        "info": "Hover effects, scroll transitions, and page load animations"
+      },
+      {
+        "type": "select",
+        "id": "animation_speed",
+        "label": "Animation speed",
+        "default": "normal",
+        "options": [
+          { "value": "fast", "label": "Fast" },
+          { "value": "normal", "label": "Normal" },
+          { "value": "slow", "label": "Slow" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Logo and favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo",
+        "info": "Displayed in the header and other brand areas"
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "label": "Logo max width",
+        "min": 60,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "default": 140
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "32x32px .png recommended"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social accounts"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram URL",
+        "info": "Full URL to your Instagram profile"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok URL",
+        "info": "Full URL to your TikTok profile"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter",
+        "label": "X / Twitter URL",
+        "info": "Full URL to your X profile"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube",
+        "label": "YouTube URL"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest",
+        "label": "Pinterest URL"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Free shipping bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_free_shipping_bar",
+        "label": "Show free shipping progress bar",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_threshold",
+        "label": "Free shipping threshold",
+        "default": "100",
+        "info": "Amount in your store currency. Leave blank to hide."
+      }
+    ]
+  },
+  {
+    "name": "Search",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Predictive search"
+      },
+      {
+        "type": "checkbox",
+        "id": "predictive_search_enabled",
+        "label": "Enable predictive search",
+        "default": true,
+        "info": "Show search suggestions as the customer types"
+      },
+      {
+        "type": "checkbox",
+        "id": "search_show_products",
+        "label": "Show product suggestions",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "search_show_collections",
+        "label": "Show collection suggestions",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "search_results_limit",
+        "label": "Max suggestions",
+        "min": 2,
+        "max": 10,
+        "step": 1,
+        "default": 6
       }
     ]
   }
