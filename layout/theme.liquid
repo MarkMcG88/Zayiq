@@ -46,6 +46,69 @@
   {% endunless %}
 
   {{ 'base.css' | asset_url | stylesheet_tag }}
+
+  <style>
+    {%- case settings.button_style -%}
+      {%- when 'rounded' -%}{%- assign btn_radius = '6px' -%}
+      {%- when 'pill' -%}{%- assign btn_radius = '999px' -%}
+      {%- else -%}{%- assign btn_radius = '0' -%}
+    {%- endcase -%}
+    {%- case settings.card_border_radius -%}
+      {%- when 'none' -%}{%- assign card_r = '0' -%}{%- assign card_r_lg = '0' -%}
+      {%- when 'medium' -%}{%- assign card_r = '8px' -%}{%- assign card_r_lg = '12px' -%}
+      {%- when 'large' -%}{%- assign card_r = '12px' -%}{%- assign card_r_lg = '20px' -%}
+      {%- else -%}{%- assign card_r = '4px' -%}{%- assign card_r_lg = '8px' -%}
+    {%- endcase -%}
+    {%- if settings.enable_animations == false -%}
+      {%- assign tr = '0s' -%}{%- assign tr_slow = '0s' -%}
+    {%- else -%}
+      {%- case settings.animation_speed -%}
+        {%- when 'fast' -%}{%- assign tr = '0.15s cubic-bezier(0.4, 0, 0.2, 1)' -%}{%- assign tr_slow = '0.3s cubic-bezier(0.4, 0, 0.2, 1)' -%}
+        {%- when 'slow' -%}{%- assign tr = '0.5s cubic-bezier(0.4, 0, 0.2, 1)' -%}{%- assign tr_slow = '0.9s cubic-bezier(0.4, 0, 0.2, 1)' -%}
+        {%- else -%}{%- assign tr = '0.3s cubic-bezier(0.4, 0, 0.2, 1)' -%}{%- assign tr_slow = '0.6s cubic-bezier(0.4, 0, 0.2, 1)' -%}
+      {%- endcase -%}
+    {%- endif -%}
+    :root {
+      --color-primary: {{ settings.color_primary | default: '#FF3C00' }};
+      --color-secondary: {{ settings.color_secondary | default: '#5B2EFF' }};
+      --color-accent: {{ settings.color_accent | default: '#00E5A0' }};
+      --color-bg: {{ settings.color_background | default: '#FFFFFF' }};
+      --color-text: {{ settings.color_text | default: '#1A1A1A' }};
+      --color-text-light: {{ settings.color_text_light | default: '#FFFFFF' }};
+      --color-surface: {{ settings.color_surface | default: '#F5F5F3' }};
+      --color-border: {{ settings.color_border | default: '#E2E2E0' }};
+      --color-primary-hover: {{ settings.color_primary_hover | default: '#E03500' }};
+      --color-secondary-hover: {{ settings.color_secondary_hover | default: '#4A1FE0' }};
+      --color-success: {{ settings.color_success | default: '#00A870' }};
+      --color-error: {{ settings.color_error | default: '#e53e3e' }};
+      {% if settings.type_header_font.family %}
+        --font-heading: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+      {% else %}
+        --font-heading: 'Space Grotesk', sans-serif;
+      {% endif %}
+      {% if settings.type_body_font.family %}
+        --font-body: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+      {% else %}
+        --font-body: 'Inter', sans-serif;
+      {% endif %}
+      --font-heading-weight: {{ settings.heading_weight | default: '700' }};
+      --heading-transform: {{ settings.heading_transform | default: 'uppercase' }};
+      --body-font-size: {{ settings.body_font_size | default: 16 }}px;
+      --body-line-height: {{ settings.body_line_height | default: '1.6' }};
+      --max-width: {{ settings.max_page_width | default: 1440 }}px;
+      --gutter: clamp(16px, 3vw, 40px);
+      --section-spacing: {{ settings.section_vertical_spacing | default: 60 }}px;
+      --grid-gap: {{ settings.grid_gap | default: 20 }}px;
+      --btn-radius: {{ btn_radius }};
+      --btn-transform: {{ settings.button_transform | default: 'uppercase' }};
+      --radius: {{ card_r }};
+      --radius-lg: {{ card_r_lg }};
+      --transition: {{ tr }};
+      --transition-slow: {{ tr_slow }};
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
+
   {{ content_for_header }}
 
   <script>
