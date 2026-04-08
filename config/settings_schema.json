@@ -3,7 +3,9 @@
     "name": "theme_info",
     "theme_name": "Zayiq",
     "theme_version": "1.0.0",
-    "theme_author": "Zayiq"
+    "theme_author": "Zayiq",
+    "theme_support_email": "support@zayiq.com",
+    "theme_documentation_url": "https://zayiq.com"
   },
   {
     "name": "Colors",
