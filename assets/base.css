@@ -552,21 +552,26 @@ p {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(32px, 5vw, 80px);
-  align-items: center;
+  align-items: stretch;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: clamp(60px, 8vh, 120px) var(--gutter);
+  padding: 0 0 0 var(--gutter);
   width: 100%;
+  min-height: 88vh;
 }
 
 @media (max-width: 900px) {
   .hero__split {
     grid-template-columns: 1fr;
     text-align: center;
+    padding: var(--gutter);
+    min-height: auto;
   }
 }
 
 .hero__text {
+  align-self: center;
+  padding: clamp(60px, 8vh, 120px) 0;
   opacity: 0;
   transform: translateY(30px);
   animation: heroReveal 1s var(--ease-out-expo) 0.2s forwards;
@@ -632,13 +637,22 @@ p {
   .hero__actions { justify-content: center; }
 }
 
-/* Hero Collage Grid */
+/* Hero Collage Grid — 4-col, 3-row
+   ┌───────────┬───────────┐
+   │  item-1   │  item-2   │
+   │ (spans    ├─────┬─────┤
+   │  2 rows)  │  3  │  4  │  ← middle-right split into 2
+   ├───────────┼─────┴─────┤
+   │  item-5   │  item-6   │
+   └───────────┴───────────┘
+*/
 .hero__collage {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
   gap: 6px;
-  height: clamp(400px, 55vh, 600px);
+  align-self: stretch;
+  min-height: 0;
   opacity: 0;
   transform: translateY(30px);
   animation: heroReveal 1s var(--ease-out-expo) 0.5s forwards;
@@ -661,29 +675,38 @@ p {
   transform: scale(1.05);
 }
 
-/* Large feature image spanning 2 rows */
+/* Item 1: left half, spans top 2 rows */
 .hero__collage-item--1 {
-  grid-column: 1;
+  grid-column: 1 / 3;
   grid-row: 1 / 3;
 }
 
+/* Item 2: right half, top row */
 .hero__collage-item--2 {
-  grid-column: 2;
+  grid-column: 3 / 5;
   grid-row: 1;
 }
 
+/* Items 3 & 4: split the middle-right into 2 columns */
 .hero__collage-item--3 {
-  grid-column: 2;
+  grid-column: 3;
   grid-row: 2;
 }
 
 .hero__collage-item--4 {
-  grid-column: 1;
+  grid-column: 4;
+  grid-row: 2;
+}
+
+/* Item 5: left half, bottom row */
+.hero__collage-item--5 {
+  grid-column: 1 / 3;
   grid-row: 3;
 }
 
-.hero__collage-item--5 {
-  grid-column: 2;
+/* Item 6: right half, bottom row */
+.hero__collage-item--6 {
+  grid-column: 3 / 5;
   grid-row: 3;
 }
 
@@ -699,6 +722,7 @@ p {
   .hero__collage-item--3 { grid-column: 2; grid-row: 2; }
   .hero__collage-item--4 { display: none; }
   .hero__collage-item--5 { display: none; }
+  .hero__collage-item--6 { display: none; }
 }
 
 .hero__scroll-hint {
