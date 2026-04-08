@@ -229,14 +229,28 @@
 </section>
 
 <!-- Related Products -->
-{% if recommendations.products.size > 0 or section.settings.show_related %}
+{% if section.settings.show_related %}
   <section class="section-padding" style="padding-top: 0;">
     <div class="page-width">
-      <h2 style="margin-bottom: 32px;" class="reveal">You May Also Like</h2>
+      <h2 style="margin-bottom: 32px;" class="reveal">More Like This</h2>
       <div class="grid grid--4 reveal-stagger">
-        {% for product in recommendations.products limit: 4 %}
-          {% render 'product-card', product: product %}
-        {% endfor %}
+        {% if recommendations.products.size > 0 %}
+          {% for rec in recommendations.products limit: 4 %}
+            {% render 'product-card', product: rec %}
+          {% endfor %}
+        {% else %}
+          {% assign current_product_id = product.id %}
+          {% assign related_count = 0 %}
+          {% for col in product.collections %}
+            {% for col_product in col.products limit: 8 %}
+              {% if col_product.id != current_product_id and related_count < 4 %}
+                {% render 'product-card', product: col_product %}
+                {% assign related_count = related_count | plus: 1 %}
+              {% endif %}
+            {% endfor %}
+            {% if related_count >= 4 %}{% break %}{% endif %}
+          {% endfor %}
+        {% endif %}
       </div>
     </div>
   </section>
