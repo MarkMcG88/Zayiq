@@ -2614,6 +2614,7 @@ p {
 
 .product-page__add-row {
   display: flex;
+  align-items: stretch;
   gap: 12px;
   margin-bottom: 24px;
 }
@@ -2623,7 +2624,6 @@ p {
   align-items: stretch;
   border: 1.5px solid var(--color-border);
   flex-shrink: 0;
-  height: 44px;
 }
 
 .product-page__qty-btn {
