@@ -230,30 +230,35 @@
 
 <!-- Related Products -->
 {% if section.settings.show_related %}
-  <section class="section-padding" style="padding-top: 0;">
-    <div class="page-width">
-      <h2 style="margin-bottom: 32px;" class="reveal">More Like This</h2>
-      <div class="grid grid--4 reveal-stagger">
-        {% if recommendations.products.size > 0 %}
-          {% for rec in recommendations.products limit: 4 %}
-            {% render 'product-card', product: rec %}
-          {% endfor %}
-        {% else %}
-          {% assign current_product_id = product.id %}
-          {% assign related_count = 0 %}
-          {% for col in product.collections %}
-            {% for col_product in col.products limit: 8 %}
-              {% if col_product.id != current_product_id and related_count < 4 %}
-                {% render 'product-card', product: col_product %}
-                {% assign related_count = related_count | plus: 1 %}
-              {% endif %}
+  {% assign has_recs = false %}
+  {% if recommendations.products.size > 0 %}
+    {% assign has_recs = true %}
+  {% endif %}
+
+  {% unless has_recs %}
+    {% assign fallback_collection = product.collections.first %}
+  {% endunless %}
+
+  {% if has_recs or fallback_collection %}
+    <section class="section-padding" style="padding-top: 0;">
+      <div class="page-width">
+        <h2 style="margin-bottom: 32px;" class="reveal">More Like This</h2>
+        <div class="grid grid--4 reveal-stagger">
+          {% if has_recs %}
+            {% for rec in recommendations.products limit: 4 %}
+              {% render 'product-card', product: rec %}
             {% endfor %}
-            {% if related_count >= 4 %}{% break %}{% endif %}
-          {% endfor %}
-        {% endif %}
+          {% else %}
+            {% for col_product in fallback_collection.products limit: 5 %}
+              {% unless col_product.id == product.id %}
+                {% render 'product-card', product: col_product %}
+              {% endunless %}
+            {% endfor %}
+          {% endif %}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  {% endif %}
 {% endif %}
 
 <!-- Sticky Add to Cart Bar -->
