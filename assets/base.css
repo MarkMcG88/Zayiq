@@ -527,7 +527,7 @@ p {
 /* --- Hero --- */
 .hero {
   position: relative;
-  min-height: 88vh;
+  height: 88vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -554,7 +554,7 @@ p {
   gap: 0;
   align-items: stretch;
   width: 100%;
-  min-height: 88vh;
+  height: 100%;
 }
 
 @media (max-width: 900px) {
