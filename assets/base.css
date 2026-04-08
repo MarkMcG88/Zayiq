@@ -416,7 +416,8 @@ p {
   opacity: 1;
 }
 
-.header__nav a::after {
+.header__nav > a::after,
+.header__dropdown-trigger::after {
   content: '';
   position: absolute;
   bottom: -2px;
@@ -427,7 +428,8 @@ p {
   transition: width var(--transition);
 }
 
-.header__nav a:hover::after {
+.header__nav > a:hover::after,
+.header__dropdown:hover .header__dropdown-trigger::after {
   width: 100%;
 }
 
