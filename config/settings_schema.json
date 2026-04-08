@@ -17,21 +17,21 @@
         "id": "color_primary",
         "label": "Primary",
         "default": "#FF3C00",
-        "info": "Main brand color — buttons, links, accents"
+        "info": "Main brand color - buttons, links, accents"
       },
       {
         "type": "color",
         "id": "color_secondary",
         "label": "Secondary",
         "default": "#5B2EFF",
-        "info": "Secondary brand color — tags, badges, alt buttons"
+        "info": "Secondary brand color - tags, badges, alt buttons"
       },
       {
         "type": "color",
         "id": "color_accent",
         "label": "Accent",
         "default": "#00E5A0",
-        "info": "Accent color — highlights, success states"
+        "info": "Accent color - highlights, success states"
       },
       {
         "type": "header",
@@ -120,7 +120,7 @@
         "type": "font_picker",
         "id": "type_header_font",
         "label": "Heading font",
-        "default": "helvetica_n7",
+        "default": "assistant_n4",
         "info": "Used for all headings, titles, and labels"
       },
       {
@@ -155,7 +155,7 @@
         "type": "font_picker",
         "id": "type_body_font",
         "label": "Body font",
-        "default": "helvetica_n4",
+        "default": "assistant_n4",
         "info": "Used for paragraphs, descriptions, and UI text"
       },
       {
@@ -326,7 +326,7 @@
         "type": "image_picker",
         "id": "favicon",
         "label": "Favicon",
-        "info": "32×32px .png recommended"
+        "info": "32x32px .png recommended"
       }
     ]
   },
