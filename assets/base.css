@@ -26,12 +26,12 @@
   --color-error: {{ settings.color_error | default: '#e53e3e' }};
 
   /* Typography */
-  {% if settings.type_header_font %}
+  {% if settings.type_header_font.family %}
     --font-heading: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
   {% else %}
     --font-heading: 'Space Grotesk', sans-serif;
   {% endif %}
-  {% if settings.type_body_font %}
+  {% if settings.type_body_font.family %}
     --font-body: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
   {% else %}
     --font-body: 'Inter', sans-serif;

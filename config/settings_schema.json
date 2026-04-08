@@ -122,8 +122,8 @@
         "type": "font_picker",
         "id": "type_header_font",
         "label": "Heading font",
-        "default": "space_grotesk_n4",
-        "info": "Used for all headings, titles, and labels"
+        "default": "work_sans_n6",
+        "info": "Used for all headings, titles, and labels. Select any font — Space Grotesk is loaded via Google Fonts by default."
       },
       {
         "type": "select",
@@ -157,8 +157,8 @@
         "type": "font_picker",
         "id": "type_body_font",
         "label": "Body font",
-        "default": "inter_n4",
-        "info": "Used for paragraphs, descriptions, and UI text"
+        "default": "assistant_n4",
+        "info": "Used for paragraphs, descriptions, and UI text. Select any font — Inter is loaded via Google Fonts by default."
       },
       {
         "type": "range",
