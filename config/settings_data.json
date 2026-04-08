@@ -55,6 +55,30 @@
       },
       "header": {
         "type": "header",
+        "blocks": {
+          "menu_feature_YMtLPR": {
+            "type": "menu_feature",
+            "settings": {
+              "menu_item": "shop",
+              "heading": "Sale",
+              "cta_text": "Shop now",
+              "link": ""
+            }
+          },
+          "menu_feature_HxGpnp": {
+            "type": "menu_feature",
+            "settings": {
+              "menu_item": "shop",
+              "heading": "New Arrivals",
+              "cta_text": "Shop now",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "menu_feature_YMtLPR",
+          "menu_feature_HxGpnp"
+        ],
         "settings": {
           "menu": "main-menu"
         }
