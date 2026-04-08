@@ -1,5 +1,16 @@
+{% case section.settings.bg_preset %}
+  {% when 'dark' %}
+    {% assign hero_bg = '#1A1A1A' %}
+  {% when 'black' %}
+    {% assign hero_bg = '#000000' %}
+  {% when 'brand' %}
+    {% assign hero_bg = 'radial-gradient(ellipse at 15% 85%, rgba(255,60,0,0.2) 0%, transparent 50%), radial-gradient(ellipse at 75% 15%, rgba(91,46,255,0.25) 0%, transparent 50%), linear-gradient(160deg, #0D0D0D 0%, #1A1A2E 40%, #16213E 100%)' %}
+  {% when 'custom' %}
+    {% assign hero_bg = section.settings.bg_custom | default: '#1A1A1A' %}
+{% endcase %}
+
 <section class="hero">
-  <div class="hero__gradient-bg"></div>
+  <div class="hero__gradient-bg" style="background: {{ hero_bg }};"></div>
 
   {% if section.settings.video_url != blank %}
     <div class="hero__video">
@@ -62,6 +73,33 @@
   "name": "Hero banner",
   "max_blocks": 6,
   "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "select",
+      "id": "bg_preset",
+      "label": "Background preset",
+      "default": "dark",
+      "options": [
+        { "value": "dark", "label": "Dark grey" },
+        { "value": "black", "label": "Black" },
+        { "value": "brand", "label": "Brand gradient" },
+        { "value": "custom", "label": "Custom" }
+      ],
+      "info": "Choose a preset or select Custom to enter your own"
+    },
+    {
+      "type": "text",
+      "id": "bg_custom",
+      "label": "Custom background",
+      "info": "Any valid CSS background value, e.g. #333 or linear-gradient(135deg, #1a1a1a, #2d1b4e)"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
     {
       "type": "text",
       "id": "subtitle",

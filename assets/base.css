@@ -539,11 +539,6 @@ p {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background:
-    radial-gradient(ellipse at 15% 85%, rgba(255,60,0,0.2) 0%, transparent 50%),
-    radial-gradient(ellipse at 75% 15%, rgba(91,46,255,0.25) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(0,229,160,0.06) 0%, transparent 60%),
-    linear-gradient(160deg, #0D0D0D 0%, #1A1A2E 40%, #16213E 100%);
 }
 
 .hero__split {
