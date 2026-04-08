@@ -2679,21 +2679,21 @@ p {
 }
 
 .product-page__color-swatch {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  border: 2px solid var(--color-border);
+  border: 2px solid transparent;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
   cursor: pointer;
-  transition: all var(--transition);
+  transition: outline-color var(--transition);
   padding: 0;
-  background: none;
+  margin: 4px;
 }
 
 .product-page__color-swatch:hover,
 .product-page__color-swatch.is-active {
-  border-color: var(--color-text);
-  transform: scale(1.1);
-  box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-text);
+  outline-color: var(--color-text);
 }
 
 /* Trust Badges */
