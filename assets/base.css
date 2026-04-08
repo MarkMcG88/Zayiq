@@ -186,7 +186,8 @@ p {
 
 .grid {
   display: grid;
-  gap: var(--gutter);
+  column-gap: var(--gutter);
+  row-gap: 48px;
 }
 
 .grid--2 { grid-template-columns: repeat(2, 1fr); }
