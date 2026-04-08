@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-page",
+      "settings": {
+        "show_size_guide": true,
+        "show_related": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,82 @@
+<section class="gift-card-page section-padding">
+  <div class="page-width">
+    <div class="gift-card">
+      <div class="gift-card__header">
+        {% if settings.logo %}
+          <img src="{{ settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" class="gift-card__logo" width="200">
+        {% else %}
+          <h2 class="gift-card__shop-name">{{ shop.name }}</h2>
+        {% endif %}
+      </div>
+
+      <h1 class="gift-card__title">Gift Card</h1>
+
+      <div class="gift-card__image-wrapper">
+        <img src="{{ 'gift-card/card.jpg' | shopify_asset_url }}" alt="Gift card illustration" width="600" height="400" loading="eager">
+      </div>
+
+      {% if gift_card.initial_value != gift_card.balance %}
+        <p class="gift-card__balance">Remaining balance: {{ gift_card.balance | money }}</p>
+      {% endif %}
+
+      <div class="gift-card__amount">
+        <p>{{ gift_card.initial_value | money }}</p>
+      </div>
+
+      <div class="gift-card__code-wrapper">
+        <input
+          type="text"
+          class="gift-card__code"
+          value="{{ gift_card.code | format_code }}"
+          id="GiftCardCode"
+          aria-label="Gift card code"
+          readonly
+        >
+        <button class="btn btn--outline gift-card__copy" id="CopyGiftCardCode" data-clipboard-target="#GiftCardCode">
+          Copy Code
+        </button>
+      </div>
+
+      {% if gift_card.pass_url %}
+        <a href="{{ gift_card.pass_url }}" class="gift-card__apple-wallet">
+          <img src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" alt="Add to Apple Wallet" width="120" height="40">
+        </a>
+      {% endif %}
+
+      <div class="gift-card__qr" data-identifier="{{ gift_card.qr_identifier }}">
+        <img src="{{ gift_card.qr_identifier | prepend: 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=' }}" alt="QR code" class="gift-card__qr-image" width="200" height="200">
+      </div>
+
+      {% if gift_card.expired? %}
+        <p class="gift-card__expired">This gift card has expired on {{ gift_card.expires_on | date: '%B %d, %Y' }}.</p>
+      {% elsif gift_card.expires_on %}
+        <p class="gift-card__expiry">Expires on {{ gift_card.expires_on | date: '%B %d, %Y' }}</p>
+      {% endif %}
+
+      {% if gift_card.enabled %}
+        <a href="{{ shop.url }}" class="btn btn--primary btn--large gift-card__shop-link" target="_blank">
+          Shop Now
+        </a>
+      {% endif %}
+
+      <div class="gift-card__print">
+        <button class="btn btn--outline" onclick="window.print();">Print Gift Card</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function(){
+    var copyBtn = document.getElementById('CopyGiftCardCode');
+    var codeInput = document.getElementById('GiftCardCode');
+    if (copyBtn && codeInput) {
+      copyBtn.addEventListener('click', function() {
+        codeInput.select();
+        document.execCommand('copy');
+        copyBtn.textContent = 'Copied!';
+        setTimeout(function(){ copyBtn.textContent = 'Copy Code'; }, 2000);
+      });
+    }
+  })();
+</script>

@@ -1,0 +1,48 @@
+<section class="section-padding">
+  <div class="page-width">
+    <div class="contact-page">
+      <div class="contact-page__header">
+        <h1 class="contact-page__title">{{ page.title }}</h1>
+        {% if page.content != blank %}
+          <div class="contact-page__content rte">
+            {{ page.content }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="contact-page__layout">
+        <div class="contact-page__form-wrapper">
+          {% form 'contact' %}
+            {% if form.posted_successfully? %}
+              <p class="form-success">Thanks for reaching out. We'll get back to you as soon as possible.</p>
+            {% endif %}
+
+            {{ form.errors | default_errors }}
+
+            <div class="form-field">
+              <label for="ContactName" class="form-label">Name</label>
+              <input type="text" name="contact[name]" id="ContactName" class="form-input" autocomplete="name" required>
+            </div>
+
+            <div class="form-field">
+              <label for="ContactEmail" class="form-label">Email</label>
+              <input type="email" name="contact[email]" id="ContactEmail" class="form-input" autocomplete="email" required>
+            </div>
+
+            <div class="form-field">
+              <label for="ContactPhone" class="form-label">Phone (optional)</label>
+              <input type="tel" name="contact[phone]" id="ContactPhone" class="form-input" autocomplete="tel">
+            </div>
+
+            <div class="form-field">
+              <label for="ContactMessage" class="form-label">Message</label>
+              <textarea name="contact[body]" id="ContactMessage" class="form-input form-textarea" rows="6" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--large">Send Message</button>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
