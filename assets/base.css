@@ -572,9 +572,10 @@ p {
 
 .hero__text {
   align-self: center;
+  width: 100%;
   max-width: calc(var(--max-width) / 2);
   margin-left: auto;
-  padding: clamp(60px, 8vh, 120px) clamp(32px, 5vw, 80px) clamp(60px, 8vh, 120px) var(--gutter);
+  padding: clamp(60px, 8vh, 120px) clamp(32px, 5vw, 80px) clamp(60px, 8vh, 120px) max(var(--gutter), calc((100vw - var(--max-width)) / 2 + var(--gutter)));
   opacity: 0;
   transform: translateY(30px);
   animation: heroReveal 1s var(--ease-out-expo) 0.2s forwards;
