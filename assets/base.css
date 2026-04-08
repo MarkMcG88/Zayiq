@@ -1009,7 +1009,7 @@ p {
 
 /* --- Lookbook Grid --- */
 .lookbook {
-  background: var(--color-bg);
+  background: #000;
   overflow: hidden;
   padding: 0;
 }
@@ -1033,11 +1033,12 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1.01);
   transition: transform 1s var(--ease-out-expo);
 }
 
 .lookbook__item:hover img {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 .lookbook__item-overlay {
