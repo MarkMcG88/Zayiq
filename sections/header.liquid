@@ -24,24 +24,54 @@
             </a>
             <div class="header__dropdown-menu">
               <div class="header__dropdown-inner">
-                {% for child_link in link.links %}
-                  {% if child_link.links.size > 0 %}
+                <div class="header__dropdown-nav">
+                  {% for child_link in link.links %}
                     <div class="header__dropdown-column">
-                      <p class="header__dropdown-heading">{{ child_link.title }}</p>
-                      <ul class="header__dropdown-links">
-                        {% for grandchild_link in child_link.links %}
-                          <li><a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a></li>
-                        {% endfor %}
-                      </ul>
+                      {% if child_link.links.size > 0 %}
+                        <p class="header__dropdown-heading">{{ child_link.title }}</p>
+                        <ul class="header__dropdown-links">
+                          {% for grandchild_link in child_link.links %}
+                            <li><a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a></li>
+                          {% endfor %}
+                        </ul>
+                      {% else %}
+                        <ul class="header__dropdown-links">
+                          <li><a href="{{ child_link.url }}" class="header__dropdown-link--featured">{{ child_link.title }}</a></li>
+                        </ul>
+                      {% endif %}
                     </div>
+                  {% endfor %}
+                </div>
+
+                <div class="header__dropdown-feature">
+                  {% assign collection_handle = link.title | handleize %}
+                  {% assign featured_collection = collections[collection_handle] %}
+                  {% if featured_collection and featured_collection.image %}
+                    <a href="{{ featured_collection.url }}" class="header__dropdown-feature-card">
+                      <div class="header__dropdown-feature-img">
+                        <img src="{{ featured_collection.image | image_url: width: 400 }}" alt="{{ featured_collection.title }}" loading="lazy">
+                      </div>
+                      <p class="header__dropdown-feature-text">{{ featured_collection.title }}</p>
+                      <p class="header__dropdown-feature-cta">Shop now <span>&rarr;</span></p>
+                    </a>
+                  {% elsif featured_collection.products.first and featured_collection.products.first.featured_image %}
+                    <a href="{{ featured_collection.url }}" class="header__dropdown-feature-card">
+                      <div class="header__dropdown-feature-img">
+                        <img src="{{ featured_collection.products.first.featured_image | image_url: width: 400 }}" alt="{{ featured_collection.title }}" loading="lazy">
+                      </div>
+                      <p class="header__dropdown-feature-text">{{ featured_collection.title }}</p>
+                      <p class="header__dropdown-feature-cta">Shop now <span>&rarr;</span></p>
+                    </a>
                   {% else %}
-                    <div class="header__dropdown-column">
-                      <ul class="header__dropdown-links">
-                        <li><a href="{{ child_link.url }}">{{ child_link.title }}</a></li>
-                      </ul>
-                    </div>
+                    <a href="{{ link.url }}" class="header__dropdown-feature-card">
+                      <div class="header__dropdown-feature-img header__dropdown-feature-img--placeholder">
+                        <p class="header__dropdown-feature-placeholder-text">{{ link.title }}</p>
+                      </div>
+                      <p class="header__dropdown-feature-text">View all {{ link.title }}</p>
+                      <p class="header__dropdown-feature-cta">Shop now <span>&rarr;</span></p>
+                    </a>
                   {% endif %}
-                {% endfor %}
+                </div>
               </div>
             </div>
           </div>
