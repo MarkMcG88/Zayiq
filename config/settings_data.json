@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "color_primary": "#FF3C00",
+    "color_primary": "#00a870",
     "color_secondary": "#5B2EFF",
     "color_accent": "#00E5A0",
     "color_background": "#FFFFFF",
@@ -22,9 +22,9 @@
     "color_success": "#00A870",
     "color_error": "#e53e3e",
     "type_header_font": "assistant_n4",
-    "type_body_font": "assistant_n4",
     "heading_weight": "700",
     "heading_transform": "uppercase",
+    "type_body_font": "assistant_n4",
     "body_font_size": 16,
     "body_line_height": "1.6",
     "max_page_width": 1440,
@@ -42,6 +42,30 @@
     "predictive_search_enabled": true,
     "search_show_products": true,
     "search_show_collections": true,
-    "search_results_limit": 6
+    "search_results_limit": 6,
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "text": "Free shipping on orders over $100 — New artist drop every month",
+          "link": "",
+          "bg_color": "#ff3c00",
+          "text_color": "#ffffff"
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "description": "Bold apparel designed by independent artists. Every piece tells a story."
+        }
+      }
+    },
+    "content_for_index": []
   }
 }
