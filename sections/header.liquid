@@ -43,35 +43,28 @@
                   {% endfor %}
                 </div>
 
-                <div class="header__dropdown-feature">
-                  {% assign collection_handle = link.title | handleize %}
-                  {% assign featured_collection = collections[collection_handle] %}
-                  {% if featured_collection and featured_collection.image %}
-                    <a href="{{ featured_collection.url }}" class="header__dropdown-feature-card">
-                      <div class="header__dropdown-feature-img">
-                        <img src="{{ featured_collection.image | image_url: width: 400 }}" alt="{{ featured_collection.title }}" loading="lazy">
-                      </div>
-                      <p class="header__dropdown-feature-text">{{ featured_collection.title }}</p>
-                      <p class="header__dropdown-feature-cta">Shop now <span>&rarr;</span></p>
-                    </a>
-                  {% elsif featured_collection.products.first and featured_collection.products.first.featured_image %}
-                    <a href="{{ featured_collection.url }}" class="header__dropdown-feature-card">
-                      <div class="header__dropdown-feature-img">
-                        <img src="{{ featured_collection.products.first.featured_image | image_url: width: 400 }}" alt="{{ featured_collection.title }}" loading="lazy">
-                      </div>
-                      <p class="header__dropdown-feature-text">{{ featured_collection.title }}</p>
-                      <p class="header__dropdown-feature-cta">Shop now <span>&rarr;</span></p>
-                    </a>
-                  {% else %}
-                    <a href="{{ link.url }}" class="header__dropdown-feature-card">
-                      <div class="header__dropdown-feature-img header__dropdown-feature-img--placeholder">
-                        <p class="header__dropdown-feature-placeholder-text">{{ link.title }}</p>
-                      </div>
-                      <p class="header__dropdown-feature-text">View all {{ link.title }}</p>
-                      <p class="header__dropdown-feature-cta">Shop now <span>&rarr;</span></p>
-                    </a>
+                {% assign link_handle = link.title | handleize %}
+                {% assign has_feature = false %}
+                {% for block in section.blocks %}
+                  {% if block.type == 'menu_feature' and block.settings.menu_item == link_handle %}
+                    {% assign has_feature = true %}
+                    <div class="header__dropdown-feature" {{ block.shopify_attributes }}>
+                      <a href="{{ block.settings.link | default: link.url }}" class="header__dropdown-feature-card">
+                        {% if block.settings.image != blank %}
+                          <div class="header__dropdown-feature-img">
+                            <img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.heading | default: link.title }}" loading="lazy">
+                          </div>
+                        {% endif %}
+                        {% if block.settings.heading != blank %}
+                          <p class="header__dropdown-feature-text">{{ block.settings.heading }}</p>
+                        {% endif %}
+                        {% if block.settings.cta_text != blank %}
+                          <p class="header__dropdown-feature-cta">{{ block.settings.cta_text }} <span>&rarr;</span></p>
+                        {% endif %}
+                      </a>
+                    </div>
                   {% endif %}
-                </div>
+                {% endfor %}
               </div>
             </div>
           </div>
@@ -116,6 +109,42 @@
       "id": "menu",
       "label": "Menu",
       "default": "main-menu"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu_feature",
+      "name": "Menu feature image",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_item",
+          "label": "Menu item handle",
+          "info": "The lowercase, hyphenated version of the nav item name (e.g. 'shop' or 'artists')"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Featured image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "New Arrivals"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "Call to action text",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
     }
   ]
 }
