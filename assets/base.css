@@ -423,7 +423,7 @@ p {
   left: 0;
   width: 0;
   height: 1.5px;
-  background: #FF3C00;
+  background: var(--color-primary);
   transition: width var(--transition);
 }
 
@@ -464,8 +464,8 @@ p {
   position: absolute;
   top: 4px;
   right: 2px;
-  background: #FF3C00;
-  color: #FFFFFF;
+  background: var(--color-primary);
+  color: var(--color-text-light);
   font-size: 0.5625rem;
   font-weight: 800;
   width: 16px;
@@ -578,7 +578,7 @@ p {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.25em;
-  color: #00E5A0;
+  color: var(--color-accent);
   margin-bottom: 24px;
   display: inline-flex;
   align-items: center;
@@ -589,7 +589,7 @@ p {
   content: '';
   width: 40px;
   height: 1.5px;
-  background: #00E5A0;
+  background: var(--color-accent);
 }
 
 @media (max-width: 900px) {
@@ -866,7 +866,7 @@ p {
 }
 
 .featured-collection__title span {
-  color: #FF3C00;
+  color: var(--color-primary);
 }
 
 /* --- Product Card --- */
@@ -899,7 +899,7 @@ p {
   position: absolute;
   top: 12px;
   left: 12px;
-  background: #FF3C00;
+  background: var(--color-primary);
   color: var(--color-text-light);
   font-family: var(--font-heading);
   font-size: 0.625rem;
@@ -950,7 +950,7 @@ p {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #5B2EFF;
+  color: var(--color-secondary);
   margin-bottom: 6px;
 }
 
@@ -966,7 +966,7 @@ p {
 }
 
 .product-card:hover .product-card__title {
-  color: #FF3C00;
+  color: var(--color-primary);
 }
 
 .product-card__price {
@@ -1226,7 +1226,7 @@ p {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #FF3C00;
+  color: var(--color-primary);
   margin-bottom: 10px;
 }
 
@@ -1491,7 +1491,7 @@ p {
   text-transform: uppercase;
   letter-spacing: 0.15em;
   margin-bottom: 20px;
-  color: #FF3C00;
+  color: var(--color-primary);
 }
 
 .footer__links li {
@@ -2071,7 +2071,7 @@ p {
 
 .header__dropdown-links a:hover {
   opacity: 1;
-  color: #FF3C00;
+  color: var(--color-primary);
 }
 
 .header__dropdown-feature {

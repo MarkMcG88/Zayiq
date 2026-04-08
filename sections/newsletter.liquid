@@ -1,7 +1,7 @@
-<section class="newsletter section-padding reveal" style="background: #1A1A1A; color: #FFFFFF;">
+<section class="newsletter section-padding reveal" style="background: var(--color-text); color: var(--color-text-light);">
   <div class="page-width">
     <div class="newsletter__inner">
-      <p class="section-label" style="justify-content: center;"><span class="section-label__line" style="background:#FFFFFF;"></span><span style="color:#FF3C00;">Stay Connected</span></p>
+      <p class="section-label" style="justify-content: center;"><span class="section-label__line" style="background:var(--color-text-light);"></span><span style="color:var(--color-primary);">Stay Connected</span></p>
       <h2 class="newsletter__title">{{ section.settings.heading | default: 'Join the Collective' }}</h2>
       <p class="newsletter__text">{{ section.settings.text | default: 'Be first to know about new artist drops, exclusive pieces, and behind-the-scenes stories.' }}</p>
 
@@ -23,11 +23,11 @@
         </div>
 
         {% if form.posted_successfully? %}
-          <p style="margin-top: 20px; color: #00E5A0; font-size: 0.875rem;">You're in. Welcome to the collective.</p>
+          <p style="margin-top: 20px; color: var(--color-accent); font-size: 0.875rem;">You're in. Welcome to the collective.</p>
         {% endif %}
 
         {% if form.errors %}
-          <p style="margin-top: 20px; color: #FF3C00; font-size: 0.875rem;">{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</p>
+          <p style="margin-top: 20px; color: var(--color-error); font-size: 0.875rem;">{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</p>
         {% endif %}
       {% endform %}
     </div>

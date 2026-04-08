@@ -13,7 +13,7 @@
   <div class="hero__split">
     <div class="hero__text">
       {% if section.settings.subtitle != blank %}
-        <p class="section-label"><span class="section-label__line" style="background:#FFFFFF;"></span><span style="color:#FF3C00;">{{ section.settings.subtitle }}</span></p>
+        <p class="section-label"><span class="section-label__line" style="background:var(--color-text-light);"></span><span style="color:var(--color-primary);">{{ section.settings.subtitle }}</span></p>
       {% endif %}
 
       <h1 class="hero__title">{{ section.settings.heading }}</h1>
@@ -24,12 +24,12 @@
 
       <div class="hero__actions">
         {% if section.settings.button_text != blank %}
-          <a href="{{ section.settings.button_link }}" class="btn btn--large" style="background:#FF3C00;color:#FFFFFF;border-color:#FF3C00;">
+          <a href="{{ section.settings.button_link }}" class="btn btn--large" style="background:var(--color-primary);color:var(--color-text-light);border-color:var(--color-primary);">
             {{ section.settings.button_text }}
           </a>
         {% endif %}
         {% if section.settings.button_text_2 != blank %}
-          <a href="{{ section.settings.button_link_2 }}" class="btn btn--large" style="background:transparent;color:#FFFFFF;border-color:rgba(255,255,255,0.7);">
+          <a href="{{ section.settings.button_link_2 }}" class="btn btn--large" style="background:transparent;color:var(--color-text-light);border-color:rgba(255,255,255,0.7);">
             {{ section.settings.button_text_2 }}
           </a>
         {% endif %}
