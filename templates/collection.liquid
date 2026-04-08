@@ -1,14 +1,9 @@
 {% paginate collection.products by 24 %}
 
-<section class="section-padding--tight">
+<section class="collection-grid" style="padding: 24px 0 clamp(60px, 10vw, 120px);">
   <div class="page-width">
     {% render 'breadcrumbs' %}
-  </div>
-</section>
-
-<section class="collection-grid section-padding">
-  <div class="page-width">
-    <div class="collection-toolbar">
+    <div class="collection-toolbar" style="margin-top: 16px;">
       <div class="collection-toolbar__left">
         <button class="collection-toolbar__filter-toggle" id="FilterToggle" aria-expanded="true">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/></svg>
